@@ -1,0 +1,11 @@
+{
+    "name": "LouangeBar",
+    "alias": "louangebar",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\LouangeBar\\Providers\\LouangeBarServiceProvider"
+    ],
+    "files": []
+}
