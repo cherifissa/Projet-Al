@@ -18,10 +18,20 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'nom',
+        'tel',
         'email',
         'password',
+        'adresse',
+        'type_piece',
+        'numero_piece',
+        'isadmin'
     ];
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class, 'client_id');
+    }
 
     /**
      * The attributes that should be hidden for serialization.

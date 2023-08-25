@@ -1,5 +1,12 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use Modules\Restaurant\Http\Controllers\ProduitController;
+use Modules\Restaurant\Http\Controllers\ServiceController;
+use Modules\Réservation\Http\Controllers\ClientController;
+use Modules\Réservation\Http\Controllers\ReservationController;
+use Modules\Restaurant\Http\Middleware\RestaurantAccessMiddleware;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +18,12 @@
 |
 */
 
-Route::prefix('restaurant')->group(function() {
-    Route::get('/', 'RestaurantController@index');
+
+//restaurant
+Route::prefix('restaurant')->middleware([RestaurantAccessMiddleware::class])->group(function () {
+    Route::get('/', [ProduitController::class, 'index']);
+    Route::resource('services', ServiceController::class)->except('show');
+    Route::resource('produits', ProduitController::class)->except('show');
+    Route::get('reservations', [ReservationController::class, 'indexrsv'])->name('rsvindex');
+    Route::get('clients', [ClientController::class, 'indexclt'])->name('cltindex');
 });

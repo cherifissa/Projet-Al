@@ -1,5 +1,13 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use Modules\Réservation\Http\Controllers\AdminController;
+use Modules\Réservation\Http\Controllers\ChambreController;
+use Modules\Réservation\Http\Controllers\MessageController;
+use Modules\Réservation\Http\Middleware\AdminAccessMiddleware;
+use Modules\Réservation\Http\Controllers\StatistiqueController;
+use Modules\Réservation\Http\Middleware\ReceptAccessMiddleware;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +19,26 @@
 |
 */
 
-Route::prefix('réservation')->group(function() {
-    Route::get('/', 'RéservationController@index');
+Route::prefix('reservation')->middleware([ReceptAccessMiddleware::class])->group(function () {
+
+    Route::get('/', function () {
+        return view('réservation::manager.index');
+    });
+    Route::get('facture', [FactureController::class, 'index'])->name('facture');
+    Route::get('print_facture', [FactureController::class, 'print'])->name('facture');
+    Route::get('chambres', [ChambreController::class, 'index'])->name('chambrerecept');
+    Route::resource('/messages', MessageController::class)->only('index', 'destroy');
+    Route::resource('profile', ProfileController::class)->only('update', 'index');
+    Route::post('changePassword/{id}', [ProfileController::class, 'changePassword'])->name('changePassword');
+    Route::resource('clients', ClientController::class)->only('index');
+    Route::resource('users', Usercontroller::class)->except('show');
+    Route::resource('commentaires', CommentaireController::class)->only('index', 'destroy');
+    Route::resource('reservations', ReservationController::class)->except('show');
+    Route::resource('admins', AdminController::class)->only('index');
+    Route::get('statistiques', [StatistiqueController::class, 'index'])->name('statistiques');
+    Route::resource('chambres', ChambreController::class)->except('show');
+    Route::resource('chambre_categories', ChambreCategorieController::class)->except('show');
 });
+//route admin
+// Route::prefix('admin')->middleware([AdminAccessMiddleware::class])->group($adminAndReceptRoutes);
+// Route::prefix('admin')->middleware([AdminAccessMiddleware::class])->group($adminRoutes);
