@@ -10,7 +10,7 @@ class ChambreCategorie extends Model
     use HasFactory;
 
     public $fillable = [
-        'nom_categorie',
+        'nom',
         'prix',
         'wifi',
         'petit_dej',

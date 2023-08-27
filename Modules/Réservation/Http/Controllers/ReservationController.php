@@ -24,13 +24,14 @@ class ReservationController extends Controller
     }
     public function create()
     {
-        $users = User::all();
+        $users = User::where('isadmin', '=', 'client')->get();
         $chambres = Chambre::where('status', '=', 'libre')->get();
         return view('réservation::manager.reservations.create', ['users' => $users, 'chambres' => $chambres]);
     }
     public function store(Request $request)
     {
-        // Validate the input data from the request
+        dd($request);
+
         $validatedData = $request->validate([
             'nbr_jour' => 'required|integer|min:1',
             'nbr_client' => 'required|integer|min:1',
@@ -42,15 +43,30 @@ class ReservationController extends Controller
         ]);
 
         $chambre = Chambre::find($validatedData["chambre_id"]);
-        $today = Carbon::today();
-        $arrival = Carbon::parse($validatedData["date_arrive"]);
-        if ($arrival->isSameDay($today)) {
-            $chambre->status = 'occupé';
-            $chambre->save();
+
+        $reservations = Reservation::where('chambre_id', $validatedData["chambre_id"])->get();
+        if (count($reservations) >= 1) {
+            foreach ($reservations as $reservation) {
+                if ($reservation->date_depart >= $validatedData["date_arrive"]) {
+                    return redirect()->back()
+                        ->withInput()
+                        ->with('erreur', 'error');
+                } else {
+                    $today = Carbon::today();
+                    $arrival = Carbon::parse($validatedData["date_arrive"]);
+                    if ($arrival->isSameDay($today)) {
+                        $chambre->status = 'occupé';
+                        $chambre->save();
+                    }
+                }
+            }
         }
-        $validatedData["prix"] = $chambre->prix * $validatedData["nbr_jour"];
+        $validatedData["prix"] = $chambre->chambreCategorie->prix * $validatedData["nbr_jour"];
         //dd($arrival->isSameDay($today));
         $validatedData["numero"] = $this->generateUniqueNumero();
+
+        //dd($validatedData);
+        $reservation = Reservation::create($validatedData);
 
         return redirect()->route('reservations.index')->with('success', 'create.');
     }
@@ -79,7 +95,7 @@ class ReservationController extends Controller
 
     public function edit(Reservation $reservation)
     {
-        return view('manager.reservations.edit', compact('reservation'));
+        return view('réservation::manager.reservations.edit', compact('reservation'));
     }
 
 
@@ -98,13 +114,14 @@ class ReservationController extends Controller
             $chambre->status = 'occupé';
             $chambre->save();
         }
+        $reservation->update($validatedData);
+
         return redirect()->route('reservations.index')->with('successUpdate', 'successfully');
     }
 
     public function destroy(Reservation $reservation)
     {
         $reservation->delete();
-
         return redirect()->back()->with('successDelete', 'Delete');
     }
 }

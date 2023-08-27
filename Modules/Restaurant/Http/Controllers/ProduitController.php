@@ -5,36 +5,47 @@ namespace Modules\Restaurant\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Restaurant\Entities\Produit;
-use Illuminate\Contracts\Support\Renderable;
+use Modules\Réservation\Entities\Reservation;
 
 class ProduitController extends Controller
 {
     public function index()
     {
         $produits = Produit::all();
-        return view('restaurant::restaurants.index', ['produits' => $produits]);
+        return view('restaurant::restaurants.produits.index', ['produits' => $produits]);
     }
 
     public function create()
     {
-
-        return view('restaurant::restaurants.create');
+        $reservations = Reservation::all();
+        return view('restaurant::restaurants.produits.create', compact('reservations'));
     }
     public function store(Request $request)
     {
+
         $validatedData = $request->validate([
             'nom' => 'required',
-            'prix' => 'required',
+            'prix' => 'required|numeric',
             'image' => 'required',
+            'type' => 'in:boisson,nourriture'
         ]);
 
+        //dd($validatedData);
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = str_replace(' ', '_', $validatedData['nom']) . uniqid() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images'), $imageName);
+            $validatedData['image'] = $imageName;
+        }
+        //dd($validatedData);
         $produit = Produit::create($validatedData);
-        return redirect()->route('produit.index')->with('success', 'update');
+        return redirect()->route('produits.index')->with('success', 'update');
     }
 
     public function edit(Produit $produit)
     {
-        return view('restaurant::reservations.edit', compact('reservation'));
+        //dd($produit);
+        return view('restaurant::restaurants.produits.edit', compact('produit'));
     }
 
 
@@ -43,12 +54,20 @@ class ProduitController extends Controller
         $validatedData = $request->validate([
             'nom' => 'required',
             'prix' => 'required',
-            'image' => 'required',
+            'type' => 'in:boisson,nourriture'
+
         ]);
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = str_replace(' ', '_', $validatedData['nom']) . uniqid() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images'), $imageName);
+            $validatedData['image'] = $imageName;
+        }
+        //dd($validatedData);
 
         $produit->update($validatedData);
 
-        return redirect()->back()->with('successUpdate', 'successfully');
+        return redirect()->route('produits.index')->with('successUpdate', 'update');
     }
 
     public function destroy(Produit $produit)

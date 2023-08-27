@@ -86,10 +86,16 @@
                                     <option selected>Sélectioner une chambre</option>
                                     @foreach ($chambres as $chambre)
                                         <option value="{{ $chambre->id }}">
-                                            {{ $chambre->id }}-{{ $chambre->type }}
+                                            {{ $chambre->id }}-{{ $chambre->chambreCategorie->nom . ' ' . $chambre->chambreCategorie->prix }}
                                         </option>
                                     @endforeach
                                 </select>
+                                @if (session('erreur'))
+                                    <div class="text-danger">
+                                        une reservation est en cours pour cette chambre
+                                    </div>
+                                @endif
+
                                 @error('chambre_id')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror

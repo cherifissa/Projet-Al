@@ -141,6 +141,11 @@
                         <ul class="list-group">
                             <li class="list-group-item"><i class="fas fa-wind"></i> Climatisation</li>
                             <li class="list-group-item"><i class="fas fa-bed"></i> Draps</li>
+                            <li class="list-group-item"><i class="fas fa-bed"></i> Nombre de lit :
+                                {{ $chambreCategorie->nbr_lit }}</li>
+                            <li class="list-group-item"><i class="fas fa-bed"></i> Nombre de chambre :
+                                {{ $chambreCategorie->nbr_chb }}</li>
+
                             <li class="list-group-item"><i class="fas fa-bed"></i> Literie de qualité supérieure</li>
                             <li class="list-group-item"><i class="fas fa-door-closed"></i> Chambre séparée</li>
                             <li class="list-group-item"><i class="fas fa-calendar-alt"></i> Unité d'hébergement rénovée en
@@ -159,7 +164,7 @@
                     <div class="col-md-6">
                         <h4>Nourriture et boissons</h4>
                         <ul class="list-group">
-                            <li class="list-group-item"><i class="fas fa-concierge-bell"></i> Service en chambre 24 h/24
+                            <li class="list-group-item"><i class="fas fa-concierge-bell"></i> Service en chambre 24h/24
                             </li>
                             <li class="list-group-item"><i class="fas fa-coffee"></i> Cafetière ou bouilloire à thé</li>
                             <li class="list-group-item"><i class="fas fa-wine-glass-alt"></i> Eau minérale gratuite</li>

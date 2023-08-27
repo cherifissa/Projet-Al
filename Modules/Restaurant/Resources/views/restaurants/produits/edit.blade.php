@@ -5,114 +5,66 @@
 @endsection
 
 @section('content')
-    <div class="container ">
-        <div class="col-md-7">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Créer une Service</h3>
+                    <h3 class="card-title">Editer un serice</h3>
                 </div>
+
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="{{ route('reservations.update', $reservation->id) }}" method="POST">
+                <form action="{{ route('produits.update', $produit) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-
                     <div class="card-body">
 
                         <div class="form-group">
-                            <label for="status">Statut</label>
-                            <select class="form-control" name="status">
-                                <option value="checkin"
-                                    {{ old('status', $reservation->status) === 'checkin' ? 'selected' : '' }}>
-                                    Check-in
-                                </option>
-                                <option value="checked"
-                                    {{ old('status', $reservation->status) === 'checked' ? 'selected' : '' }}>
-                                    Checked
-                                </option>
-                                <option value="pending"
-                                    {{ old('status', $reservation->status) === 'checked' ? 'selected' : '' }}>
-                                    Pending
-                                </option>
-                                <option value="annule"
-                                    {{ old('status', $reservation->status) === 'annule' ? 'selected' : '' }}>
-                                    Annulé
-                                </option>
+                            <label for="type_service">Nom produit</label>
+                            <input type="text" class="form-control" name="nom"
+                                value="{{ old('nom', $produit->nom) }}">
+                            @error('nom')
+                                <div class="text-danger">{{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="prix">Prix</label>
+                            <input type="number" class="form-control" name="prix"
+                                value="{{ old('prix', $produit->prix) }}">
+                            @error('prix')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="type_service">Image produit</label>
+                            <input type="file" class="form-control" name="image" value="{{ old('image') }}">
+                            @error('image')
+                                <div class="text-danger">{{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="type">Type produit</label>
+                            <select class="form-control" name="type">
+                                <option value="boisson" {{ old('type', $produit->type) === 'boisson' ? 'selected' : '' }}>
+                                    Boisson</option>
+                                <option value="nourriture"
+                                    {{ old('type', $produit->type) === 'nourriture' ? 'selected' : '' }}>Nourriture</option>
                             </select>
-                            @error('status')
+                            @error('type')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
 
-                        <div class="form-group">
-                            <label for="date_arrive">Date d'arrivée</label>
-                            <input type="date" class="form-control" name="date_arrive"
-                                value="{{ old('date_arrive', $reservation->date_arrive) }}">
-                            @error('date_arrive')
-                                <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="date_depart">Date de départ</label>
-                            <input type="date" class="form-control" name="date_depart"
-                                value="{{ old('date_depart', $reservation->date_depart) }}">
-                            @error('date_depart')
-                                <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="nbr_jour">Nombre de jours</label>
-                            <input type="number" class="form-control" name="nbr_jour"
-                                value="{{ old('nbr_jour', $reservation->nbr_jour) }}">
-                            @error('nbr_jour')
-                                <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
                     </div>
                     <div class="card-footer">
-                        <a class="btn btn-danger" href="#">Annuler</a>
-                        <button type="submit" class="btn btn-info float-right">Modifier</button>
+                        <a class="btn btn-danger " href="#">Annuler</a>
+                        <button type="submit" class="btn btn-info float-right">Ajouter</button>
                     </div>
-                    <script>
-                        const dateArriveInput = document.querySelector('input[name="date_arrive"]');
-                        const dateDepartInput = document.querySelector('input[name="date_depart"]');
-                        const nbrJourInput = document.querySelector('input[name="nbr_jour"]');
-
-                        function calculateNumberOfDays(startDate, endDate) {
-                            const oneDay = 24 * 60 * 60 * 1000; // One day in milliseconds
-                            const start = new Date(startDate);
-                            const end = new Date(endDate);
-                            const diffDays = Math.round(Math.abs((end - start) / oneDay));
-                            return diffDays;
-                        }
-
-                        function updateNumberOfDays() {
-                            const startDate = dateArriveInput.value;
-                            const endDate = dateDepartInput.value;
-
-                            if (startDate && endDate) {
-                                const numberOfDays = calculateNumberOfDays(startDate, endDate);
-                                nbrJourInput.value = numberOfDays;
-                            }
-                        }
-
-                        dateArriveInput.addEventListener('change', function() {
-                            // Ensure "Date de départ" is always greater than "Date d'arrivée"
-                            if (dateDepartInput.value < dateArriveInput.value) {
-                                dateDepartInput.value = dateArriveInput.value;
-                            }
-                            updateNumberOfDays();
-                        });
-
-                        dateDepartInput.addEventListener('change', function() {
-                            // Ensure "Date de départ" is always greater than "Date d'arrivée"
-                            if (dateDepartInput.value < dateArriveInput.value) {
-                                dateDepartInput.value = dateArriveInput.value;
-                            }
-                            updateNumberOfDays();
-                        });
-                    </script>
                 </form>
             </div>
         </div>

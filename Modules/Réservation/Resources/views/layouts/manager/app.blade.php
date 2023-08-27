@@ -22,6 +22,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/css/multiselect.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -47,7 +50,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                 <li class="nav-item">
                     <a class="nav-link {{ request()->is('reservation') ? 'active' : '' }}" aria-current="page"
-                        href="{{ 'reservation' }}">
+                        href="{{ '/reservation/reservation' }}">
                         <div class="d-flex align-items-center"> <i class="nav-icon fas fa-home"></i>
                             <p class="ml-2 mt-3">Accueil</p>
                         </div>
@@ -56,7 +59,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                 <li class="nav-item d-none d-sm-inline-block">
                     <a class="nav-link {{ request()->is('reservation/chambre_categories') ? 'active' : '' }} "
-                        href="{{ 'reservation/chambre_categories' }}">
+                        href="{{ '/reservation/chambre_categories' }}">
                         <div class="d-flex align-items-center">
                             <i class="nav-icon fa fa-bookmark"></i>
                             <p class="ml-2 mt-3">Categories de Chambre</p>
@@ -66,7 +69,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                 <li class="nav-item d-none d-sm-inline-block">
                     <a class="nav-link {{ request()->is('reservation/chambres*') ? 'active' : '' }} "
-                        href="{{ 'reservation/chambres' }}">
+                        href="{{ '/reservation/chambres' }}">
                         <div class="d-flex align-items-center"><i class="nav-icon fas fa-house-user"></i>
                             <p class="ml-2 mt-3">Chambres</p>
                         </div>
@@ -398,6 +401,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="{{ asset('js/jspdf.umd.min.js') }}"></script>
     <script src="{{ asset('js/html2canvas.min.js') }}"></script>
     <script src="{{ asset('js/html2pdf.min.js') }}"></script>
+
+    <!-- jQuery -->
+    <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
+    <!-- Bootstrap 4 -->
+    <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('plugins/jszip/jszip.min.js') }}"></script>
+    <script src="{{ asset('plugins/pdfmake/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('plugins/pdfmake/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="{{ asset('dist/js/demo.js') }}"></script>
 
 </body>
 

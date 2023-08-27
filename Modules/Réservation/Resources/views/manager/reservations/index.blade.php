@@ -97,6 +97,7 @@
                 <th scope="col">Statut</th>
                 <th scope="col">Date d'arrivé</th>
                 <th scope="col">Date de depart</th>
+                <th scope="col">Prix</th>
                 <th scope="col">Client</th>
                 <th scope="col">Chambre</th>
                 <th scope="col">Actions</th>
@@ -122,23 +123,13 @@
                     <td>{{ $reservation->status }}</td>
                     <td>{{ $reservation->date_arrive }}</td>
                     <td>{{ $reservation->date_depart }}</td>
+                    <td>{{ $reservation->prix }}</td>
                     <td>{{ $reservation->client_id }}</td>
                     <td>{{ $reservation->chambre_id }}</td>
-                    @php
-                        $url = Route::current()->uri;
-                        $segments = explode('/', $url);
-                        $firstSegment = $segments[0];
-                        
-                        if ($firstSegment == 'admin') {
-                            $prefix = 'admin';
-                        } else {
-                            $prefix = 'recept';
-                        }
-                    @endphp
+
                     <td>
                         <div class="d-flex justify-content-evenly">
-                            <a href="{{ '/' . $prefix . '/reservations' . '/' . $reservation->numero . '/edit' }}"
-                                class="btn btn-secondary">
+                            <a href="{{ route('reservations.edit', $reservation) }}" class="btn btn-secondary">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
                                     <path
                                         d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z" />
@@ -155,13 +146,12 @@
                                     </svg>
                                 </button>
                             </form>
-                            <form action="{{ route('facture', $reservation) }}" method="GET">
+                            <form action="{{ route('facture', $reservation) }}" method="Post">
                                 @csrf
                                 <button class="btn btn-link bg-dark btn-secondary" data-bs-toggle="tooltip"
                                     data-bs-placement="bottom" title="Consulter la facture">
                                     <i class="fa fa-print"></i>
                                 </button>
-
                             </form>
 
                         </div>

@@ -10,7 +10,7 @@
             use App\Models\User;
             use App\Models\Chambre;
             use App\Models\Reservation;
-            //use App\Models\DemandeReservation;
+            use App\Models\DemandeReservation;
             use App\Models\Services;
             use App\Models\Commentaire;
             use App\Models\Message;
@@ -21,7 +21,7 @@
                     ->count(),
                 'chambres' => DB::table('chambres')->count(),
                 'reservations' => DB::table('reservations')->count(),
-                //'demandes' => DB::table('demande_reservations')->count(),
+                'demandes' => DB::table('demande_reservations')->count(),
                 'services' => DB::table('services')->count(),
                 'users' => DB::table('users')
                     ->where('isadmin', '<>', 'client')
@@ -84,7 +84,7 @@
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            {{-- <h3>{{ $tableCounts['demandes'] }}</h3> --}}
+                            <h3>{{ $tableCounts['demandes'] }}</h3>
                             <p>Les demandes de Réservations</p>
                         </div>
                         <div class="icon">

@@ -2,9 +2,11 @@
 
 namespace Modules\Restaurant\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Restaurant\Entities\Produit;
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Support\Facades\Session;
 
 class RestaurantController extends Controller
 {
@@ -14,66 +16,26 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        return view('restaurant::index');
+        $produits = Produit::all();
+        return view('restaurant::restaurants.index', ['produits' => $produits]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
-    public function create()
+    public function addToCart(Request $request)
     {
-        return view('restaurant::create');
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        $product_id = $request->input('product_id');
+        $product_qt = $request->input('quantite') ?? 1;
 
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
-    {
-        return view('restaurant::show');
-    }
+        $cart = Session::get('cart', []);
 
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
-    {
-        return view('restaurant::edit');
-    }
+        if (isset($cart[$product_id])) {
+            $cart[$product_id] += $product_qt;
+        } else {
+            $cart[$product_id] = $product_qt;
+        }
 
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Renderable
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+        Session::put('cart', $cart);
 
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
-    public function destroy($id)
-    {
-        //
+
+        return redirect()->back();
     }
 }

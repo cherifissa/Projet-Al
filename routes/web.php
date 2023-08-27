@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Aut\LoginController;
+use Modules\Réservation\Http\Controllers\MessageController;
+use Modules\Réservation\Http\Controllers\CommentaireController;
+use Modules\Réservation\Http\Controllers\ChambreCategorieController;
+use Modules\Réservation\Http\Controllers\ClientReservationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +27,8 @@ Route::prefix('/')->group(function () {
     Route::get('/', function () {
         return view('clients.accueil.index');
     })->name('accueil');
+    Route::get('/reserver', [ClientReservationController::class, 'reserver'])->name('reservationclient');
+
     Route::resource('/message', MessageController::class)->only('store');
     Route::post('commentaire', [CommentaireController::class, 'store'])->name('commentairesend');
     Route::get('/dasboard', [ClientDashboardController::class, 'index'])->name('dashboard');

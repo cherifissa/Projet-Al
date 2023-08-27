@@ -2,78 +2,82 @@
 
 namespace Modules\Réservation\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Réservation\Entities\ChambreCategorie;
 
 class ChambreCategorieController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * @return Renderable
-     */
+    public function infos(Request $request)
+    {
+        $chambreValue = $request->route('chambre');
+        $chambreCategorie = ChambreCategorie::where('nom', $chambreValue)->first();
+        if ($chambreCategorie == null) {
+            return redirect()->back()->with('error', 'erreur');
+        }
+        //dd($chambreCategorie);
+        return view('clients.chambre.chambreinfos', compact('chambreCategorie'));
+    }
     public function index()
     {
-        return view('réservation::index');
+        $ChambreCategories = ChambreCategorie::paginate(8);
+        return view('réservation::manager.chambre_categories.index', compact('ChambreCategories'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
     public function create()
     {
-        return view('réservation::create');
+        return view('réservation::manager.chambre_categories.create');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
-     */
     public function store(Request $request)
     {
-        //
+
+        $validatedData = $request->validate([
+            'nom' => 'required|in:standard,privilege,suite junior,suite famille,suite VIP,suite presidentielle|unique:chambre_categories',
+            'prix' => 'required|integer',
+            'nbr_lit' => 'required|integer|min:1',
+            'nbr_chb' => 'required|integer|min:1',
+            'description' => 'nullable|string',
+        ]);
+        $validatedData['petit_dej'] = $request->has('petit_dej') ? 1 : 0;
+        $validatedData['wifi'] = $request->has('wifi') ? 1 : 0;
+
+
+        //dd($validatedData);
+        $chambreCategorie = ChambreCategorie::create($validatedData);
+
+        return redirect()->route('chambre_categories.index')->with('success', 'Chambre category created successfully.');
     }
 
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
+    public function edit($ChambreCategorieid)
     {
-        return view('réservation::show');
+        $chambreCategorie = ChambreCategorie::find($ChambreCategorieid);
+        return view('réservation::manager.chambre_categories.edit', compact('chambreCategorie'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
+    public function update(Request $request,  $ChambreCategorieid)
     {
-        return view('réservation::edit');
+        $chambreCategorie = ChambreCategorie::find($ChambreCategorieid);
+        $validatedData = $request->validate([
+            'nom' => 'required|in:standard,privilege,suite junior,suite famille,suite VIP,suite presidentielle|unique:chambre_categories,nom,' . $chambreCategorie->id,
+            'prix' => 'required|integer',
+            'nbr_lit' => 'required|integer|min:1',
+            'nbr_chb' => 'required|integer|min:1',
+            'description' => 'nullable|string',
+        ]);
+        $validatedData['petit_dej'] = $request->has('petit_dej') ? 1 : 0;
+        $validatedData['wifi'] = $request->has('wifi') ? 1 : 0;
+
+        //dd($validatedData);
+        $chambreCategorie->update($validatedData);
+
+        return redirect()->route('chambre_categories.index')
+            ->with('successUpdate', 'Chambre category updated successfully.');
     }
 
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Renderable
-     */
-    public function update(Request $request, $id)
+    public function destroy($ChambreCategorieid)
     {
-        //
-    }
+        $ChambreCategorie = ChambreCategorie::find($ChambreCategorieid);
+        $ChambreCategorie->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
-    public function destroy($id)
-    {
-        //
+        return redirect()->back()->with('successDelete', 'Delete');
     }
 }

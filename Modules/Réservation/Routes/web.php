@@ -1,12 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Modules\Réservation\Http\Controllers\UserController;
 use Modules\Réservation\Http\Controllers\AdminController;
 use Modules\Réservation\Http\Controllers\ChambreController;
+use Modules\Réservation\Http\Controllers\FactureController;
 use Modules\Réservation\Http\Controllers\MessageController;
 use Modules\Réservation\Http\Middleware\AdminAccessMiddleware;
+use Modules\Réservation\Http\Controllers\CommentaireController;
+use Modules\Réservation\Http\Controllers\ReservationController;
 use Modules\Réservation\Http\Controllers\StatistiqueController;
 use Modules\Réservation\Http\Middleware\ReceptAccessMiddleware;
+use Modules\Réservation\Http\Controllers\ChambreCategorieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,19 +24,21 @@ use Modules\Réservation\Http\Middleware\ReceptAccessMiddleware;
 |
 */
 
+
 Route::prefix('reservation')->middleware([ReceptAccessMiddleware::class])->group(function () {
 
     Route::get('/', function () {
         return view('réservation::manager.index');
     });
-    Route::get('facture', [FactureController::class, 'index'])->name('facture');
-    Route::get('print_facture', [FactureController::class, 'print'])->name('facture');
+    Route::get('rapport', [FactureController::class, 'rapport'])->name('rapport');
+    Route::post('facture/{reservation}', [FactureController::class, 'index'])->name('facture');
+    Route::get('print_facture', [FactureController::class, 'print'])->name('factureprint');
     Route::get('chambres', [ChambreController::class, 'index'])->name('chambrerecept');
     Route::resource('/messages', MessageController::class)->only('index', 'destroy');
     Route::resource('profile', ProfileController::class)->only('update', 'index');
     Route::post('changePassword/{id}', [ProfileController::class, 'changePassword'])->name('changePassword');
     Route::resource('clients', ClientController::class)->only('index');
-    Route::resource('users', Usercontroller::class)->except('show');
+    Route::resource('users', UserController::class)->except('show');
     Route::resource('commentaires', CommentaireController::class)->only('index', 'destroy');
     Route::resource('reservations', ReservationController::class)->except('show');
     Route::resource('admins', AdminController::class)->only('index');

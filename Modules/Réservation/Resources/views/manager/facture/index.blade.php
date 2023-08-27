@@ -10,19 +10,10 @@
             <div class="col-12">
                 <div class="callout callout-info">
                     <h5><i class="fas fa-info"></i> Note:</h5>
-                    This page has been enhanced for printing. Click the print button at the bottom of the invoice to test.
+                    Cette page a été améliorée pour l'impression. Cliquez sur le bouton Imprimer en bas de la facture pour
+                    imprimmer la facure.
                 </div>
-                @php
-                    $url = Route::current()->uri;
-                    $segments = explode('/', $url);
-                    $firstSegment = $segments[0];
-                    
-                    if ($firstSegment == 'admin') {
-                        $prefix = 'admin';
-                    } else {
-                        $prefix = 'recept';
-                    }
-                @endphp
+
                 <!-- Main content -->
                 <div class="invoice p-3 mb-3">
                     <!-- title row -->
@@ -161,11 +152,10 @@
                         <!-- /.col -->
                     </div>
                     <!-- /.row -->
-
                     <!-- this row will not appear when printing -->
                     <div class="row no-print">
                         <div class="col-12">
-                            <a href="{{ '/' . $prefix . '/' . 'print_facture' }}" rel="noopener" class="btn btn-default"><i
+                            <a href="{{ route('factureprint') }}" rel="noopener" class="btn btn-default"><i
                                     class="fas fa-print"></i> Print</a>
                             <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i>
                                 Submit

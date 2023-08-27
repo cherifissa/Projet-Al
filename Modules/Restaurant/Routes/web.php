@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Modules\Restaurant\Http\Controllers\ProduitController;
+use Modules\Restaurant\Http\Controllers\RestaurantController;
 use Modules\Restaurant\Http\Controllers\ServiceController;
 use Modules\Réservation\Http\Controllers\ClientController;
 use Modules\Réservation\Http\Controllers\ReservationController;
@@ -21,7 +22,8 @@ use Modules\Restaurant\Http\Middleware\RestaurantAccessMiddleware;
 
 //restaurant
 Route::prefix('restaurant')->middleware([RestaurantAccessMiddleware::class])->group(function () {
-    Route::get('/', [ProduitController::class, 'index']);
+    Route::get('/', [RestaurantController::class, 'index']);
+    Route::post('cartadd', [RestaurantController::class, 'addToCart'])->name('cartadd');
     Route::resource('services', ServiceController::class)->except('show');
     Route::resource('produits', ProduitController::class)->except('show');
     Route::get('reservations', [ReservationController::class, 'indexrsv'])->name('rsvindex');

@@ -2,8 +2,9 @@
 
 namespace Modules\Réservation\Entities;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
-use servation\Database\factories\ChambreFactory;
+use Modules\Réservation\Entities\ChambreCategorie;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Chambre extends Model
@@ -16,8 +17,8 @@ class Chambre extends Model
         'categorie_id'
     ];
 
-    // protected static function newFactory()
-    // {
-    //     return \Modules\RéChambreFactory::new();
-    // }
+    public function chambreCategorie()
+    {
+        return $this->belongsTo(ChambreCategorie::class, 'categorie_id');
+    }
 }

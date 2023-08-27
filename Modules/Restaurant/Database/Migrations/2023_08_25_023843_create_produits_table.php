@@ -15,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('produits', function (Blueprint $table) {
             $table->id();
-
+            $table->text('nom');
+            $table->integer('prix');
+            $table->text('image');
+            $table->enum('type', ['boisson', 'nourriture']);
             $table->timestamps();
         });
     }

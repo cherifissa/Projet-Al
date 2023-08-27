@@ -1,4 +1,4 @@
-@extends('layouts.manager.app')
+@extends('réservation::layouts.manager.app')
 
 @section('titre')
     Utilisateurs
@@ -113,7 +113,7 @@
                         </div>
 
                         <div class="card-footer">
-                            <a class="btn btn-danger " href="#">Annuler</a>
+                            <a class="btn btn-danger" href="{{ $previousUrl }}">Annuler</a>
                             <button type="submit" class="btn btn-info float-right">Ajouter</button>
                         </div>
 

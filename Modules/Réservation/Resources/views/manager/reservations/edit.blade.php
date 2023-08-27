@@ -14,18 +14,8 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    @php
-                        $url = Route::current()->uri;
-                        $segments = explode('/', $url);
-                        $firstSegment = $segments[0];
-                        
-                        if ($firstSegment == 'admin') {
-                            $prefix = 'admin';
-                        } else {
-                            $prefix = 'recept';
-                        }
-                    @endphp
-                    <form action="{{ '/' . $prefix . '/reservations' . '/' . $reservation->numero }}" method="POST">
+
+                    <form action="{{ route('reservations.update', $reservation) }}" method="POST">
                         @csrf
                         @method('PUT')
 

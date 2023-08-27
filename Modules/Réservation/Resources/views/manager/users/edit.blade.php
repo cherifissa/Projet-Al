@@ -1,4 +1,4 @@
-@extends('layouts.manager.app')
+@extends('réservation::layouts.manager.app')
 
 @section('titre')
     Utilisateurs
@@ -14,18 +14,8 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    @php
-                        $url = Route::current()->uri;
-                        $segments = explode('/', $url);
-                        $firstSegment = $segments[0];
-                        
-                        if ($firstSegment == 'admin') {
-                            $prefix = 'admin';
-                        } else {
-                            $prefix = 'recept';
-                        }
-                    @endphp
-                    <form action="{{ '/' . $prefix . '/users' . '/' . $user->id }}" method="POST">
+
+                    <form action="{{ route('users.update', $user->id) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="card-body">
@@ -123,7 +113,7 @@
                         </div>
 
                         <div class="card-footer">
-                            <a class="btn btn-danger " href="#">Annuler</a>
+                            <a class="btn btn-danger" href="{{ route($routeName) }}">Annuler</a>
                             <button type="submit" class="btn btn-info float-right">Modifier</button>
                         </div>
 

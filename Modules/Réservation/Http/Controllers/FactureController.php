@@ -15,8 +15,6 @@ class FactureController extends Controller
     public function index(Reservation $reservation)
     {
         $currentDate = Carbon::now();
-
-
         $date = "le " . $currentDate->format('d/m/Y');
         $client = User::find($reservation->client_id);
         $services1 = Service::where('reservation_id', $reservation->numero)
@@ -39,7 +37,7 @@ class FactureController extends Controller
             ->toArray();
 
         $totalPrixservice = $services1->sum('prix');
-        //dd($reservation);
+        // dd($reservation);
 
         $totalPrixFromServices = collect($services)->pluck('totalPrice')->sum();
         $totalprix = $reservation->prix + $totalPrixFromServices;
@@ -58,6 +56,10 @@ class FactureController extends Controller
     }
     public function print()
     {
-        return view('manager.facture.printfacture');
+        return view('réservation::manager.facture.printfacture');
+    }
+    public function rapport()
+    {
+        return view('réservation::manager.facture.Rapport.rapport');
     }
 }

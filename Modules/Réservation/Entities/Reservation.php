@@ -2,7 +2,9 @@
 
 namespace Modules\Réservation\Entities;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Réservation\Entities\Chambre;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Reservation extends Model

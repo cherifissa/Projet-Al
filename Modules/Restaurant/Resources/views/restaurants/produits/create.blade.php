@@ -14,40 +14,17 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form action="{{ route('services.store') }}" method="POST">
+                    <form action="{{ route('produits.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="card-body">
 
                             <div class="form-group">
-                                <label for="type_service">Type du service</label>
-                                <select class="form-control" name="type_service" id="type_service">
-                                    <option value="">Sélectionner le type du service</option>
-                                    <option value="ptdej" {{ old('type_service') === 'ptdej' ? 'selected' : '' }}>Petit
-                                        dejeuner</option>
-                                    <option value="dej" {{ old('type_service') === 'dej' ? 'selected' : '' }}>Dejeuner
-                                    </option>
-                                    <option value="diner" {{ old('type_service') === 'diner' ? 'selected' : '' }}>Dinner
-                                    </option>
-                                </select>
-                                @error('type_service')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label for="type_payement">Type de payement</label>
-                                <select class="form-control" name="type_payement" id="type_payement">
-                                    <option value="">Sélectionner le mode de payement</option>
-                                    <option value="cash" {{ old('type_payement') === 'cash' ? 'selected' : '' }}>Cash
-                                    </option>
-                                    <option value="reservation"
-                                        {{ old('type_payement') === 'reservation' ? 'selected' : '' }}>Reservation</option>
-                                    <option value="gratuite" {{ old('type_payement') === 'gratuite' ? 'selected' : '' }}>
-                                        Gratuité</option>
-                                </select>
-                                @error('type_payement')
-                                    <div class="text-danger">{{ $message }}</div>
+                                <label for="nom">Nom produit</label>
+                                <input type="text" class="form-control" name="nom" value="{{ old('nom') }}">
+                                @error('nom')
+                                    <div class="text-danger">{{ $message }}
+                                    </div>
                                 @enderror
                             </div>
 
@@ -59,21 +36,28 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group" id="reservationSection">
-                                <label for="reservation_id">ID du réservation</label>
-                                <select class="form-control" name="reservation_id">
-                                    <option value="">Sélectionner une réservation</option>
-                                    @foreach ($reservations as $reservation)
-                                        <option value="{{ $reservation->numero }}"
-                                            {{ old('reservation_id') == $reservation->numero ? 'selected' : '' }}>
-                                            {{ $reservation->numero }}-{{ ' ' . $reservation->chambre_id . ' ' . $reservation->user->nom }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                @error('reservation_id')
-                                    <div class="text-danger">{{ $message }}</div>
+                            <div class="form-group">
+                                <label for="type_service">Image produit</label>
+                                <input type="file" class="form-control" name="image" value="{{ old('image') }}">
+                                @error('image')
+                                    <div class="text-danger">{{ $message }}
+                                    </div>
                                 @enderror
                             </div>
+
+                            <div class="form-group">
+                                <label for="type">Type produit</label>
+                                <select class="form-control" name="type">
+                                    <option value="">Selectionner un type</option>
+                                    <option value="boisson">Boisson</option>
+                                    <option value="nourriture">Nourriture</option>
+                                </select>
+                                @error('type')
+                                    <div class="text-danger">{{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
                         </div>
                         <div class="card-footer">
                             <a class="btn btn-danger " href="#">Annuler</a>

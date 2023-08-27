@@ -14,6 +14,7 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
+
                     <form action="{{ route('chambres.store') }}" method="POST">
                         @csrf
                         <div class="card-body">

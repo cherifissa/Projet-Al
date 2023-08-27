@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+    <script src="{{ asset('js/sweetalert.js') }}"></script>
+
     <!-- fevicon -->
     <link rel="icon" href="{{ asset('images/logo.png') }}" />
     <link rel="stylesheet" href="{{ asset('css/jquery.mCustomScrollbar.min.css') }}">

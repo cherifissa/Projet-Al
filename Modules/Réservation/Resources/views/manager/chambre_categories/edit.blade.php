@@ -15,7 +15,8 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form action="{{ route('chambre_categories.update', $ChambreCategorie) }}" method="POST"
+
+                    <form action="{{ route('chambre_categories.update', $chambreCategorie) }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
@@ -25,23 +26,23 @@
                                 <select class="form-control" name="nom">
                                     <option value="">Selectionner un type</option>
                                     <option value="standard"
-                                        {{ old('nom', $ChambreCategorie->nom) === 'standard' ? 'selected' : '' }}>standard
+                                        {{ old('nom', $chambreCategorie->nom) === 'standard' ? 'selected' : '' }}>standard
                                     </option>
                                     <option value="privilege"
-                                        {{ old('nom', $ChambreCategorie->nom) === 'privilege' ? 'selected' : '' }}>privilege
+                                        {{ old('nom', $chambreCategorie->nom) === 'privilege' ? 'selected' : '' }}>privilege
                                     </option>
                                     <option value="suite junior"
-                                        {{ old('nom', $ChambreCategorie->nom) === 'suite junior' ? 'selected' : '' }}>
+                                        {{ old('nom', $chambreCategorie->nom) === 'suite junior' ? 'selected' : '' }}>
                                         suite junior</option>
                                     <option value="suite famille"
-                                        {{ old('nom', $ChambreCategorie->nom) === 'suite famille' ? 'selected' : '' }}>
+                                        {{ old('nom', $chambreCategorie->nom) === 'suite famille' ? 'selected' : '' }}>
                                         suite famille
                                     </option>
                                     <option value="suite VIP"
-                                        {{ old('nom', $ChambreCategorie->nom) === 'suite VIP' ? 'selected' : '' }}>suite VIP
+                                        {{ old('nom', $chambreCategorie->nom) === 'suite VIP' ? 'selected' : '' }}>suite VIP
                                     </option>
                                     <option value="suite presidentielle"
-                                        {{ old('nom', $ChambreCategorie->nom) === 'suite presidentielle' ? 'selected' : '' }}>
+                                        {{ old('nom', $chambreCategorie->nom) === 'suite presidentielle' ? 'selected' : '' }}>
                                         suite presidentielle
                                     </option>
                                 </select>
@@ -53,7 +54,7 @@
                             <div class="form-group">
                                 <label for="prix">Prix</label>
                                 <input type="number" class="form-control" name="prix"
-                                    value="{{ old('prix', $ChambreCategorie->prix) }}">
+                                    value="{{ old('prix', $chambreCategorie->prix) }}">
                                 @error('prix')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -62,7 +63,7 @@
                             <div class="form-group">
                                 <label for="nbr_chb">Nombre de chambre</label>
                                 <input type="number" maxlength="1" max="5" min="1" class="form-control"
-                                    name="nbr_chb" value="{{ old('nbr_chb', $ChambreCategorie->nbr_chb) }}">
+                                    name="nbr_chb" value="{{ old('nbr_chb', $chambreCategorie->nbr_chb) }}">
                                 @error('nbr_chb')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -71,7 +72,7 @@
                             <div class="form-group">
                                 <label for="nbr_lit">Nombre de lit</label>
                                 <input type="number" maxlength="1" max="5" min="1" class="form-control"
-                                    name="nbr_lit" value="{{ old('nbr_lit', $ChambreCategorie->nbr_lit) }}">
+                                    name="nbr_lit" value="{{ old('nbr_lit', $chambreCategorie->nbr_lit) }}">
                                 @error('nbr_lit')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -80,7 +81,7 @@
                             <div class="form-group">
                                 <label for="description">Description</label>
                                 <input type="text" class="form-control" name="description"
-                                    value="{{ old('description', $ChambreCategorie->description) }}">
+                                    value="{{ old('description', $chambreCategorie->description) }}">
                                 @error('description')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -89,13 +90,13 @@
                             <div class="mt-4 mb-3">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" name="wifi"
-                                        value="{{ old('wifi', $ChambreCategorie->wifi) }}" type="checkbox">
+                                        value="{{ old('wifi', $chambreCategorie->wifi) }}" type="checkbox">
                                     <label class="form-check-label">Wifi</label>
                                 </div>
 
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" name="petit_dej"
-                                        value="{{ old('wifi', $ChambreCategorie->petit_dej) }}" type="checkbox">
+                                        value="{{ old('wifi', $chambreCategorie->petit_dej) }}" type="checkbox">
                                     <label class="form-check-label">Petit déjeuner</label>
                                 </div>
                                 <div class="form-check form-check-inline">
