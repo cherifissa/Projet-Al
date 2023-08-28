@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('louangebar::layouts.app')
 @section('titre')
     Bar
 @endsection
