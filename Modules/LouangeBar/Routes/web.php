@@ -27,6 +27,6 @@ Route::prefix('louangebar')->middleware([LouanBarMiddleware::class])->group(func
     Route::post('cartremoveall', [LouangeBarController::class, 'removeAllCart'])->name('removeAllCart');
     Route::resource('services', ServiceLouangeController::class)->except('show');
     Route::resource('produits', ProduitLouangeController::class)->except('show');
-    Route::get('reservations', [ReservationController::class, 'indexrsv'])->name('rsvindex');
-    Route::get('clients', [ClientController::class, 'indexclt'])->name('cltindex');
+    Route::get('reservations', [ReservationController::class, 'indexrsv'])->name('rsvindexbar');
+    Route::get('clients', [ClientController::class, 'indexclt'])->name('cltindexbar');
 });

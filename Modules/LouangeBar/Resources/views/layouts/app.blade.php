@@ -52,8 +52,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('restaurant') ? 'active' : '' }}" aria-current="page"
-                        href="/restaurant">
+                    <a class="nav-link {{ request()->is('louangebar') ? 'active' : '' }}" aria-current="page"
+                        href="/louangebar">
                         <div class="d-flex align-items-center"> <i class="nav-icon fas fa-home"></i>
                             <p class="ml-2 mt-3">Accueil</p>
                         </div>
@@ -61,32 +61,32 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </li>
 
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a class="nav-link {{ request()->is('restaurant/clients*') ? 'active' : '' }} "
-                        href="/restaurant/clients">
+                    <a class="nav-link {{ request()->is('louangebar/clients*') ? 'active' : '' }} "
+                        href="/louangebar/clients">
                         <div class="d-flex align-items-center"> <i class="nav-icon fas fa-users"></i>
                             <p class="ml-2 mt-3">Clients</p>
                         </div>
                     </a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a class="nav-link {{ request()->is('restaurant/reservations*') ? 'active' : '' }} "
-                        href="/restaurant/reservations">
+                    <a class="nav-link {{ request()->is('louangebar/reservations*') ? 'active' : '' }} "
+                        href="/louangebar/reservations">
                         <div class="d-flex align-items-center"> <i class="nav-icon fa fa-receipt"></i>
                             <p class="ml-2 mt-3">Reservations</p>
                         </div>
                     </a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a class="nav-link {{ request()->is('restaurant/produits*') ? 'active' : '' }} "
-                        href="/restaurant/produits">
+                    <a class="nav-link {{ request()->is('louangebar/produits*') ? 'active' : '' }} "
+                        href="/louangebar/produits">
                         <div class="d-flex align-items-center"> <i class="nav-icon fa fa-bookmark"></i>
                             <p class="ml-2 mt-3">Produits </p>
                         </div>
                     </a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a class="nav-link {{ request()->is('restaurant/services*') ? 'active' : '' }} "
-                        href="/restaurant/services">
+                    <a class="nav-link {{ request()->is('louangebar/services*') ? 'active' : '' }} "
+                        href="/louangebar/services">
                         <div class="d-flex align-items-center"> <i class="nav-icon fa fa-bookmark"></i>
                             <p class="ml-2 mt-3">Services </p>
                         </div>
@@ -132,7 +132,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                         <li class="nav-item">
                             <a href="#"
-                                class="nav-link  {{ request()->is('admin/clients*') ? 'active' : '' }} ">
+                                class="nav-link  {{ request()->is('louangebar/clients*') ? 'active' : '' }} ">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     Clients
@@ -141,7 +141,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                             <ul class="nav nav-treeview" style="display: none;">
                                 <li class="nav-item">
-                                    <a href="{{ route('cltindex') }}" class="nav-link">
+                                    <a href="{{ route('cltindexbar') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Liste des clients</p>
                                     </a>
@@ -150,7 +150,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </li>
                         <li class="nav-item">
                             <a href="#"
-                                class="nav-link  {{ request()->is('restaurant/reservations*') ? 'active' : '' }} ">
+                                class="nav-link  {{ request()->is('louangebar/reservations*') ? 'active' : '' }} ">
                                 <i class="nav-icon fa fa-receipt"></i>
                                 <p>
                                     Reservations
@@ -159,7 +159,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                             <ul class="nav nav-treeview" style="display: none;">
                                 <li class="nav-item">
-                                    <a href="{{ route('rsvindex') }}" class="nav-link">
+                                    <a href="{{ route('rsvindexbar') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Liste des reservations</p>
                                     </a>
@@ -168,7 +168,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </li>
                         <li class="nav-item">
                             <a href="#"
-                                class="nav-link  {{ request()->is('restaurant/services*') ? 'active' : '' }} ">
+                                class="nav-link  {{ request()->is('louangebar/services*') ? 'active' : '' }} ">
                                 <i class="nav-icon fa fa-bookmark"></i>
                                 <p>
                                     Services
@@ -195,7 +195,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                         <li class="nav-item mt-auto">
                             <a href="{{ route('profile.index') }}"
-                                class="nav-link  {{ request()->is('restaurant/profile*') ? 'active' : '' }} ">
+                                class="nav-link  {{ request()->is('louangebar/profile*') ? 'active' : '' }} ">
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>Profile</p>
                             </a>

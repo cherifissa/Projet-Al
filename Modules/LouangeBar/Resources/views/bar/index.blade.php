@@ -1,4 +1,4 @@
-@extends('restaurant::layouts.app')
+@extends('layouts.app')
 @section('titre')
     Bar
 @endsection
