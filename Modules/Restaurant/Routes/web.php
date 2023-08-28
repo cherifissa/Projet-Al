@@ -24,6 +24,9 @@ use Modules\Restaurant\Http\Middleware\RestaurantAccessMiddleware;
 Route::prefix('restaurant')->middleware([RestaurantAccessMiddleware::class])->group(function () {
     Route::get('/', [RestaurantController::class, 'index']);
     Route::post('cartadd', [RestaurantController::class, 'addToCart'])->name('cartadd');
+    Route::post('cartpay', [RestaurantController::class, 'cartpay'])->name('cartpay');
+    Route::post('cartremove', [RestaurantController::class, 'removeFromCart'])->name('cartremove');
+    Route::post('cartremoveall', [RestaurantController::class, 'removeAllCart'])->name('removeAllCart');
     Route::resource('services', ServiceController::class)->except('show');
     Route::resource('produits', ProduitController::class)->except('show');
     Route::get('reservations', [ReservationController::class, 'indexrsv'])->name('rsvindex');

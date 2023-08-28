@@ -13,6 +13,8 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('users')->delete();
+
         DB::table('users')->insert([
             // Insert your data here
             // Example:
@@ -53,6 +55,20 @@ class UsersTableSeeder extends Seeder
                 'numero_piece' => 'OM604088',
                 'adresse' => '410 Bauch Rue\nRonnyfort, OH 64207-4732',
                 'isadmin' => 'server',
+                'password' => '$2y$10$5ak.FK1.YTEE4yqgiOxyGuvfR80i1qLkKyuAp0YHK2D.98y69HjRu', // Hashed password
+                'remember_token' => 'ZjjXTe1Uv1',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => 4,
+                'nom' => 'Mahamat cherif',
+                'tel' => '09 328-1489',
+                'email' => 'mcherif@gmail.com',
+                'type_piece' => 'passeport',
+                'numero_piece' => 'KL904488',
+                'adresse' => '410 Bauch Rue\nRonnyfort, OH 64207-4732',
+                'isadmin' => 'client',
                 'password' => '$2y$10$5ak.FK1.YTEE4yqgiOxyGuvfR80i1qLkKyuAp0YHK2D.98y69HjRu', // Hashed password
                 'remember_token' => 'ZjjXTe1Uv1',
                 'created_at' => now(),

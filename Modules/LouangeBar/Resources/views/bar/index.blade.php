@@ -1,6 +1,6 @@
 @extends('restaurant::layouts.app')
 @section('titre')
-    Restaurant
+    Bar
 @endsection
 @section('content')
 

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Aut\LoginController;
+use App\Http\Controllers\ClientDashboardController;
 use Modules\Réservation\Http\Controllers\MessageController;
 use Modules\Réservation\Http\Controllers\CommentaireController;
 use Modules\Réservation\Http\Controllers\ChambreCategorieController;

@@ -37,10 +37,9 @@ class FactureController extends Controller
             ->toArray();
 
         $totalPrixservice = $services1->sum('prix');
-        // dd($reservation);
-
         $totalPrixFromServices = collect($services)->pluck('totalPrice')->sum();
         $totalprix = $reservation->prix + $totalPrixFromServices;
+        // dd($reservation);
         return view('réservation::manager.facture.index', compact('client', 'services', 'reservation', 'date', 'totalprix', 'totalPrixFromServices', 'totalPrixservice'));
     }
 

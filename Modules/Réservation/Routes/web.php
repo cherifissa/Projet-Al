@@ -6,6 +6,7 @@ use Modules\Réservation\Http\Controllers\AdminController;
 use Modules\Réservation\Http\Controllers\ChambreController;
 use Modules\Réservation\Http\Controllers\FactureController;
 use Modules\Réservation\Http\Controllers\MessageController;
+use Modules\Réservation\Http\Controllers\ProfileController;
 use Modules\Réservation\Http\Middleware\AdminAccessMiddleware;
 use Modules\Réservation\Http\Controllers\CommentaireController;
 use Modules\Réservation\Http\Controllers\ReservationController;

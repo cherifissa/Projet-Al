@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Restaurant\Http\Controllers;
+namespace Modules\LouangeBar\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -8,7 +8,7 @@ use Modules\Restaurant\Entities\Service;
 use Illuminate\Contracts\Support\Renderable;
 use Modules\Réservation\Entities\Reservation;
 
-class ServiceController extends Controller
+class ServiceLouangeController extends Controller
 {
     public function index()
     {
@@ -29,7 +29,6 @@ class ServiceController extends Controller
     }
     public function store(Request $request)
     {
-
         $validatedData = $request->validate([
             'type_service' => 'required|in:ptdej,dej,diner',
             'type_payement' => 'required|in:cash,gratuite,reservation',

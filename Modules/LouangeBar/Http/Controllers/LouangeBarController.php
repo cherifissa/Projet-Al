@@ -2,9 +2,11 @@
 
 namespace Modules\LouangeBar\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Session;
+use Modules\Restaurant\Entities\Produit;
+use Illuminate\Contracts\Support\Renderable;
 
 class LouangeBarController extends Controller
 {
@@ -14,66 +16,53 @@ class LouangeBarController extends Controller
      */
     public function index()
     {
-        return view('louangebar::index');
+        $produits = Produit::all();
+        return view('louangebar::bar.produits.index', ['produits' => $produits]);
+    }
+    public function addToCart(Request $request)
+    {
+
+        $product_id = $request->input('product_id');
+        $product_qt = $request->input('quantite') ?? 1;
+        $product_prix = $request->input('product_price');
+
+        // dd($product_id, $product_qt, $product_prix);
+        $cart = Session::get('cart', []);
+
+        if (isset($cart[$product_id])) {
+            $cart[$product_id]['quantity'] += $product_qt;
+        } else {
+            $cart[$product_id] = [
+                'quantity' => $product_qt,
+                'price' => $product_prix,
+            ];
+        }
+        Session::put('cart', $cart);
+
+
+        return redirect()->back();
+    }
+    public function removeFromCart(Request $request)
+    {
+        $product_id = $request->input('product_id');
+        $cart = Session::get('cartbar', []);
+
+        if (isset($cart[$product_id])) {
+            if ($cart[$product_id]['quantity'] <= 1) {
+                unset($cart[$product_id]);
+            } else {
+                $cart[$product_id]['quantity']--;
+            }
+            Session::put('cartbar', $cart);
+        }
+
+        return redirect()->back();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
-    public function create()
+    public function removeAllCart(Request $request)
     {
-        return view('louangebar::create');
-    }
+        Session::put('cartbar', []);
 
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
-    {
-        return view('louangebar::show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
-    {
-        return view('louangebar::edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Renderable
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
-    public function destroy($id)
-    {
-        //
+        return redirect()->back();
     }
 }
