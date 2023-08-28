@@ -13,13 +13,13 @@ class ProduitLouangeController extends Controller
     public function index()
     {
         $produits = Produit::all();
-        return view('restaurant::restaurants.produits.index', ['produits' => $produits]);
+        return view('louangebar::bar.produits.index', ['produits' => $produits]);
     }
 
     public function create()
     {
         $reservations = Reservation::all();
-        return view('restaurant::restaurants.produits.create', compact('reservations'));
+        return view('louangebar::bar.produits.create', compact('reservations'));
     }
     public function store(Request $request)
     {
@@ -46,7 +46,7 @@ class ProduitLouangeController extends Controller
     public function edit(Produit $produit)
     {
         //dd($produit);
-        return view('restaurant::restaurants.produits.edit', compact('produit'));
+        return view('louangebar::bar.produits.edit', compact('produit'));
     }
 
 

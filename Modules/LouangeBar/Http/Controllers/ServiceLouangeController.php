@@ -13,7 +13,7 @@ class ServiceLouangeController extends Controller
     public function index()
     {
         $services = Service::orderBy('id', 'desc')->paginate(6);
-        return view('restaurant::restaurants.services.index', ['services' => $services]);
+        return view('louangebar::bar.services.index', ['services' => $services]);
     }
     public function create(Request $request)
     {
@@ -22,10 +22,10 @@ class ServiceLouangeController extends Controller
         //dd($totalPrice);
 
         $reservations = Reservation::all();
-        return view('restaurant::restaurants.services.create', compact('reservations', 'total'));
+        return view('louangebar::bar.services.create', compact('reservations', 'total'));
 
         $reservations = Reservation::all();
-        return view('restaurant::restaurants.services.create', ['reservations' => $reservations]);
+        return view('louangebar::bar.services.create', ['reservations' => $reservations]);
     }
     public function store(Request $request)
     {
@@ -36,11 +36,11 @@ class ServiceLouangeController extends Controller
             'reservation_id' => 'exists:reservations,numero',
         ]);
         $service = Service::create($validatedData);
-        return redirect()->route('services.index')->with('success', 'successfully');
+        return redirect()->route('serviceslouange.index')->with('success', 'successfully');
     }
     public function edit(Service $service)
     {
-        return view('restaurant::restaurants.services.edit', compact('service'));
+        return view('louangebar::bar.services.edit', compact('service'));
     }
 
     public function update(Request $request, Service $service)
@@ -53,7 +53,7 @@ class ServiceLouangeController extends Controller
 
         $service->update($validatedData);
 
-        return redirect()->route('services.index')->with('successUpdate', 'successfully.');
+        return redirect()->route('serviceslouange.index')->with('successUpdate', 'successfully.');
     }
 
     public function destroy(Service $service)

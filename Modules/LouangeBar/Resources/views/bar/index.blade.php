@@ -1,4 +1,4 @@
-@extends('louangebar::layouts.app')
+@extends('louangebar::layouts.applouange')
 @section('titre')
     Bar
 @endsection
@@ -67,7 +67,7 @@
                 </script>
             @endif
             @php
-                $cart = Session::get('cart', []);
+                $cart = Session::get('cartbar', []);
             @endphp
             <!-- Main content -->
             <section class="content">
@@ -166,7 +166,7 @@
                                             <td>{{ $produit->prix }}</td>
                                             <td style="width: auto;">
 
-                                                <form action="{{ route('cartadd') }}" method="post">
+                                                <form action="{{ route('cartaddbar') }}" method="post">
                                                     @csrf
                                                     <div class="row" style="width: auto;">
                                                         <div class="col-md-4">
@@ -189,7 +189,7 @@
                                                 <div class="d-flex justify-content-center ">
                                                     <div class="row">
                                                         <div class="col-md-4 ml-2">
-                                                            <form action="{{ route('cartremove') }}" method="post">
+                                                            <form action="{{ route('cartremovebar') }}" method="post">
                                                                 @csrf <!-- Include this CSRF token for security -->
                                                                 <input type="hidden" name="product_id"
                                                                     value="{{ $produit->id }}">
@@ -243,14 +243,14 @@
                                                 </tr>
                                             @endforeach
 
-                                            <form action="{{ route('removeAllCart') }}" method="post">
+                                            <form action="{{ route('removeAllCartbar') }}" method="post">
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger mb-2">
                                                     <i class="fas fa-times-circle">Vider</i>
                                                 </button>
                                             </form>
 
-                                            <form action="{{ route('services.create') }}" method="post">
+                                            <form action="{{ route('serviceslouange.create') }}" method="post">
                                                 @csrf
                                                 @method('GET')
                                                 <input type="hidden" name="cart" value="{{ $total }}">

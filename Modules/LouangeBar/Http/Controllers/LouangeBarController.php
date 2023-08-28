@@ -17,17 +17,16 @@ class LouangeBarController extends Controller
     public function index()
     {
         $produits = Produit::all();
-        return view('louangebar::bar.produits.index', ['produits' => $produits]);
+        return view('louangebar::bar.index', ['produits' => $produits]);
     }
-    public function addToCart(Request $request)
+    public function addToCartbar(Request $request)
     {
-
         $product_id = $request->input('product_id');
         $product_qt = $request->input('quantite') ?? 1;
         $product_prix = $request->input('product_price');
 
         // dd($product_id, $product_qt, $product_prix);
-        $cart = Session::get('cart', []);
+        $cart = Session::get('cartbar', []);
 
         if (isset($cart[$product_id])) {
             $cart[$product_id]['quantity'] += $product_qt;
@@ -37,7 +36,7 @@ class LouangeBarController extends Controller
                 'price' => $product_prix,
             ];
         }
-        Session::put('cart', $cart);
+        Session::put('cartbar', $cart);
 
 
         return redirect()->back();

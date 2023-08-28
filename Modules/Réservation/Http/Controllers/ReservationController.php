@@ -30,7 +30,6 @@ class ReservationController extends Controller
     }
     public function store(Request $request)
     {
-        dd($request);
 
         $validatedData = $request->validate([
             'nbr_jour' => 'required|integer|min:1',
