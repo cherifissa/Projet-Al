@@ -19,7 +19,7 @@ return new class extends Migration
             $table->enum('type_piece', ['cni', 'passeport', 'carte consulaire']);
             $table->string('numero_piece', 15);
             $table->string('adresse', 75);
-            $table->enum('isadmin', ['admin', 'recept', 'client', 'server']);
+            $table->enum('isadmin', ['recept', 'client', 'server', 'barman']);
             $table->string('password', 65);
             $table->rememberToken();
             $table->timestamps();

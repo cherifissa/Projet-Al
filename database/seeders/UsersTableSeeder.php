@@ -26,7 +26,7 @@ class UsersTableSeeder extends Seeder
                 'type_piece' => 'carte consulaire',
                 'numero_piece' => 'UA6122312',
                 'adresse' => '6336 Kilback Freeway Apt. 851\nLake Ginaton, WV 51906',
-                'isadmin' => 'admin',
+                'isadmin' => 'barman',
                 'password' => '$2y$10$PG.d92YYlhGNjIZ5Lvj9VOs8Gu5ZsDUvgRSspdDOqZZalqMtNFcba', // Hashed password
                 'remember_token' => 'IBqZSvywbm',
                 'created_at' => now(),

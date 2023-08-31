@@ -1,4 +1,4 @@
-@extends('layouts.restaurant.app')
+@extends('restaurant::layouts.app')
 @section('titre')
     Restaurant clt
 @endsection

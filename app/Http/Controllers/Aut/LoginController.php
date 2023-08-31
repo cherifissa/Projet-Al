@@ -26,9 +26,9 @@ class LoginController extends Controller
             if ($user->isadmin == 'client') {
                 session(['client' => $user]);
                 return redirect()->intended('/');
-            } elseif ($user->isadmin == 'admin') {
-                session(['admin' => $user]);
-                return redirect()->intended('/reservation');
+            } elseif ($user->isadmin == 'barman') {
+                session(['barman' => $user]);
+                return redirect()->intended('/louangebar');
             } elseif ($user->isadmin == 'recept') {
                 session(['recept' => $user]);
                 return redirect()->intended('/reservation');
@@ -50,8 +50,8 @@ class LoginController extends Controller
         if ($user->isadmin == 'client') {
             session(['client' => null]);
             return redirect()->intended('/');
-        } elseif ($user->isadmin == 'admin') {
-            session(['admin' => null]);
+        } elseif ($user->isadmin == 'barman') {
+            session(['barman' => null]);
             return redirect()->intended('/login');
         } elseif ($user->isadmin == 'recept') {
             session(['recept' => null]);

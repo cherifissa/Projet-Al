@@ -19,20 +19,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
     <script src="{{ asset('js/sweetalert.js') }}"></script>
-    <link rel="shortcut icon" href="{{ asset('dist/img/AdminLTELogo.png') }}" type="image/x-icon">
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="{{ asset('fonts/fontfamilly.css') }}">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <script src="{{ asset('js/sweetalert.js') }}"></script>
-
-    <link rel="stylesheet" href="{{ asset('dist/css/multiselect.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 
 </head>
 
@@ -85,8 +71,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a class="nav-link {{ request()->is('louangebar/services*') ? 'active' : '' }} "
-                        href="/louangebar/services">
+                    <a class="nav-link {{ request()->is('louangebar/serviceslouange*') ? 'active' : '' }} "
+                        href="/louangebar/serviceslouange">
                         <div class="d-flex align-items-center"> <i class="nav-icon fa fa-bookmark"></i>
                             <p class="ml-2 mt-3">Services </p>
                         </div>
@@ -177,13 +163,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                             <ul class="nav nav-treeview" style="display: none;">
                                 <li class="nav-item">
-                                    <a href="{{ route('services.index') }}" class="nav-link">
+                                    <a href="{{ route('serviceslouange.index') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Liste des services</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('services.create') }}" class="nav-link">
+                                    <a href="{{ route('serviceslouange.create') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Créer une service</p>
                                     </a>
@@ -256,22 +242,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- AdminLTE App -->
-    <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
-    <!-- Bootstrap 4 -->
-    <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- DataTables  & Plugins -->
-    <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('plugins/jszip/jszip.min.js') }}"></script>
-    <script src="{{ asset('plugins/pdfmake/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('plugins/pdfmake/vfs_fonts.js') }}"></script>
-    <script src="{{ asset('plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
-    <script src="{{ asset('plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 
     <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
 

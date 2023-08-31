@@ -68,12 +68,7 @@
     <div class="card">
         <div class="card-header d-flex p-0">
             <h3 class="card-title p-3">Liste des Services</h3>
-            <ul class="nav nav-pills ml-auto p-2">
-                <li class="nav-item">
-                    <a class="btn btn-block btn-success"
-                        href="/restaurant/{{ request()->segment(count(request()->segments())) }}/create">Ajouter</a>
-                </li>
-            </ul>
+
         </div><!-- /.card-header -->
     </div>
     <table class="table table-bordered border-secondary">

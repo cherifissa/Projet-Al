@@ -250,7 +250,7 @@
                                                 </button>
                                             </form>
 
-                                            <form action="{{ route('services.create') }}" method="post">
+                                            <form action="{{ route('servicesresto.create') }}" method="post">
                                                 @csrf
                                                 @method('GET')
                                                 <input type="hidden" name="cart" value="{{ $total }}">

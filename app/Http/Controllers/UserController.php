@@ -21,7 +21,7 @@ class UserController extends Controller
             'tel' => 'required|string|max:20',
             'email' => 'required|email|unique:users|max:255',
             'adresse' => 'required|string|max:255',
-            'isadmin' => 'required|in:admin,recept,client,server',
+            'isadmin' => 'required|in:barman,recept,client,server',
             'type_piece' => 'required|in:cni,passeport,carte consulaire',
             'numero_piece' => 'required|string|max:15',
             'password' => 'required|string|min:6|confirmed',
@@ -65,7 +65,7 @@ class UserController extends Controller
                 'adresse' => 'required|string|max:255',
                 'type_piece' => 'required|in:cni,passeport,carte consulaire',
                 'numero_piece' => 'required|string|max:15',
-                'isadmin' => '|in:admin,recept,server',
+                'isadmin' => '|in:barman,recept,server',
             ]);
         }
 

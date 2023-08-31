@@ -86,7 +86,7 @@
                         type: 'column'
                     },
                     title: {
-                        text: 'Bénéfice total du restaurant par date'
+                        text: 'Bénéfice total du restaurant/Louange Bar par date'
                     },
                     xAxis: {
                         categories: serviceData.map(item => formatDate(item
@@ -108,7 +108,7 @@
                         type: 'line'
                     },
                     title: {
-                        text: 'Bénéfice total du restaurant par date'
+                        text: 'Bénéfice total du restaurant/Louange Bar par date'
                     },
                     xAxis: {
                         categories: serviceData.map(item => formatDate(item

@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Modules\Restaurant\Http\Controllers\ClientRestoController;
 use Modules\Restaurant\Http\Controllers\ProduitController;
+use Modules\Restaurant\Http\Controllers\ReservationRestoController;
 use Modules\Restaurant\Http\Controllers\RestaurantController;
 use Modules\Restaurant\Http\Controllers\ServiceController;
-use Modules\Réservation\Http\Controllers\ClientController;
-use Modules\Réservation\Http\Controllers\ReservationController;
+use Modules\Restaurant\Http\Controllers\ServiceRestoController;
 use Modules\Restaurant\Http\Middleware\RestaurantAccessMiddleware;
 
 /*
@@ -27,8 +28,8 @@ Route::prefix('restaurant')->middleware([RestaurantAccessMiddleware::class])->gr
     Route::post('cartpay', [RestaurantController::class, 'cartpay'])->name('cartpay');
     Route::post('cartremove', [RestaurantController::class, 'removeFromCart'])->name('cartremove');
     Route::post('cartremoveall', [RestaurantController::class, 'removeAllCart'])->name('removeAllCart');
-    Route::resource('services', ServiceController::class)->except('show');
+    Route::resource('servicesresto', ServiceRestoController::class)->except('show');
     Route::resource('produits', ProduitController::class)->except('show');
-    Route::get('reservations', [ReservationController::class, 'indexrsv'])->name('rsvindex');
-    Route::get('clients', [ClientController::class, 'indexclt'])->name('cltindex');
+    Route::get('reservations', [ReservationRestoController::class, 'indexrsv'])->name('rsvindex');
+    Route::get('clients', [ClientRestoController::class, 'indexclt'])->name('cltindex');
 });

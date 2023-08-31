@@ -16,10 +16,10 @@ class LouanBarMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $userData = session('admin');
+        $userData = session('barman');
         $isadmin = $userData['isadmin'] ?? null;
 
-        if ($isadmin === 'admin') {
+        if ($isadmin === 'barman') {
             return $next($request);
         }
 

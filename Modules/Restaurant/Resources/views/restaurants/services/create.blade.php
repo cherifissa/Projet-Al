@@ -1,4 +1,4 @@
-@extends('layouts.restaurant.app')
+@extends('restaurant::layouts.app')
 
 @section('titre')
     Restaurant
@@ -14,7 +14,7 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form action="{{ '/restaurant/services' }}" method="POST">
+                    <form action="{{ route('servicesresto.store') }}" method="POST">
                         @csrf
 
                         <div class="card-body">
