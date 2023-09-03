@@ -39,7 +39,7 @@ class ProfileBarController extends Controller
     public function changePassword(Request $request,  $user)
     {
         $user = User::find($user);
-        dd($user->email);
+        // dd($user->email);
 
         $request->validate([
             'oldpassword' => 'required|string|min:8',
