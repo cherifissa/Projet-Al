@@ -314,5 +314,71 @@ class DatabaseSeeder extends Seeder
                 'chambre_id' => $randomChambre->id,
             ]);
         }
+        DB::table('produits')->delete();
+        DB::table('produits')->insert([
+            [
+                'id' => 1,
+                'nom' => 'Pizza italien',
+                'prix' => '3500',
+                'image' => 'pizza_italien64eb88f9adbaa.jpg',
+                'type' => 'nourriture',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => 2,
+                'nom' => 'Humberger',
+                'prix' => '2500',
+                'image' => 'hamburger64eb89196bb56.jpg',
+                'type' => 'nourriture',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => 3,
+                'nom' => 'Humberger double',
+                'prix' => '3500',
+                'image' => 'Hamburger_double64eb8940098ef.jpg',
+                'type' => 'nourriture',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => 4,
+                'nom' => 'Jus d`\'orange et autres',
+                'prix' => '1500',
+                'image' => 'jus_orange.jpg',
+                'type' => 'boisson',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => 5,
+                'nom' => 'Boisson de tout type',
+                'prix' => '1000',
+                'image' => 'boisson.jpg',
+                'type' => 'boisson',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => 6,
+                'nom' => 'Café',
+                'prix' => '500',
+                'image' => 'cafe.jpg',
+                'type' => 'boisson',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => 7,
+                'nom' => 'Alcool de tout type',
+                'prix' => '500',
+                'image' => 'alcool.jpg',
+                'type' => 'boisson',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ]);
     }
 }
