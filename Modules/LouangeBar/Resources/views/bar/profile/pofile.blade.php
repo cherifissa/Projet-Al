@@ -1,4 +1,4 @@
-@extends('réservation::layouts.manager.app')
+@extends('louangebar::layouts.applouange')
 
 @section('title')
     Profile
@@ -57,7 +57,8 @@
                                     alt="User profile picture">
                             </div>
 
-                            <form class="form-horizontal" method="POST" action="{{ route('profile.update', $user->id) }}">
+                            <form class="form-horizontal" method="POST"
+                                action="{{ route('profilebar.update', $user->id) }}">
                                 @csrf
                                 @method('PUT')
 
@@ -117,7 +118,7 @@
                     <!-- Profile Image -->
                     <div class="card card-primary card-outline">
                         <div class="card-body box-profile">
-                            <form class="form-horizontal" method="POST" action="{{ route('changePassword', $user) }}">
+                            <form class="form-horizontal" method="POST" action="{{ route('changepasswordbar', $user) }}">
                                 @csrf
 
                                 <div class="form-group row">

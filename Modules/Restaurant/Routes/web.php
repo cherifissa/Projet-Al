@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use Modules\Restaurant\Http\Controllers\ClientRestoController;
 use Modules\Restaurant\Http\Controllers\ProduitController;
+use Modules\Restaurant\Http\Controllers\ProfileRestoController;
 use Modules\Restaurant\Http\Controllers\ReservationRestoController;
 use Modules\Restaurant\Http\Controllers\RestaurantController;
-use Modules\Restaurant\Http\Controllers\ServiceController;
 use Modules\Restaurant\Http\Controllers\ServiceRestoController;
 use Modules\Restaurant\Http\Middleware\RestaurantAccessMiddleware;
 
@@ -32,4 +32,5 @@ Route::prefix('restaurant')->middleware([RestaurantAccessMiddleware::class])->gr
     Route::resource('produits', ProduitController::class)->except('show');
     Route::get('reservations', [ReservationRestoController::class, 'indexrsv'])->name('rsvindex');
     Route::get('clients', [ClientRestoController::class, 'indexclt'])->name('cltindex');
+    Route::resource('profileresto', ProfileRestoController::class)->only('update', 'index');
 });

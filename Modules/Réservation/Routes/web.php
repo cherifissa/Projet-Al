@@ -13,6 +13,7 @@ use Modules\Réservation\Http\Controllers\ReservationController;
 use Modules\Réservation\Http\Controllers\StatistiqueController;
 use Modules\Réservation\Http\Middleware\ReceptAccessMiddleware;
 use Modules\Réservation\Http\Controllers\ChambreCategorieController;
+use Modules\Réservation\Http\Controllers\DemandeReservationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,7 @@ Route::prefix('reservation')->middleware([ReceptAccessMiddleware::class])->group
     Route::post('facture/{reservation}', [FactureController::class, 'index'])->name('facture');
     Route::get('print_facture', [FactureController::class, 'print'])->name('factureprint');
     Route::get('chambres', [ChambreController::class, 'index'])->name('chambrerecept');
+    Route::get('demandes', [DemandeReservationController::class, 'index'])->name('demandes');
     Route::resource('/messages', MessageController::class)->only('index', 'destroy');
     Route::resource('profile', ProfileController::class)->only('update', 'index');
     Route::post('changePassword/{id}', [ProfileController::class, 'changePassword'])->name('changePassword');

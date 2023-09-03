@@ -102,7 +102,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-light-dark elevation-2">
             <!-- Brand Logo -->
-            <a href="{{ route('profile.index') }}" class="brand-link">
+            <a href="{{ route('profilebar.index') }}" class="brand-link">
                 <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Dashboard</span>
@@ -180,8 +180,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <ul class="nav nav-bottom nav-sidebar flex-column" data-widget="treeview" role="menu">
 
                         <li class="nav-item mt-auto">
-                            <a href="{{ route('profile.index') }}"
-                                class="nav-link  {{ request()->is('louangebar/profile*') ? 'active' : '' }} ">
+                            <a href="{{ route('profilebar.index') }}"
+                                class="nav-link  {{ request()->is('louangebar/profilebar*') ? 'active' : '' }} ">
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>Profile</p>
                             </a>

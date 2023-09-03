@@ -180,8 +180,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <ul class="nav nav-bottom nav-sidebar flex-column" data-widget="treeview" role="menu">
 
                         <li class="nav-item mt-auto">
-                            <a href="{{ route('profile.index') }}"
-                                class="nav-link  {{ request()->is('restaurant/profile*') ? 'active' : '' }} ">
+                            <a href="{{ route('profileresto.index') }}"
+                                class="nav-link  {{ request()->is('restaurant/profileresto*') ? 'active' : '' }} ">
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>Profile</p>
                             </a>

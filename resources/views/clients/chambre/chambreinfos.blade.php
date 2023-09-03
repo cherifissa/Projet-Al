@@ -112,7 +112,7 @@
                 </div>
                 <div class="col-md-5">
                     <h1 class="text text-uppercase" style="text-align: center;">{{ $chambreCategorie->nom }}</h1>
-                    <p class="text text-justify">{{ $chambreCategorie->description }}</p>
+                    <p class="text text-justify h5">{{ $chambreCategorie->description }}</p>
                 </div>
 
             </div>

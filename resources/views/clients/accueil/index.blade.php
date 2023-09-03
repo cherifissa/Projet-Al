@@ -10,16 +10,119 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img class="first-slide" src="images/banner1.jpg" alt="First slide">
-                    <div class="container">
+                    <div class="carousel-caption ">
+                        <div>
+                            <div class="typing">
+                                <h2 class="text-uppercase">Bienvenue à notre hôtel de charme...</h2>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img class="second-slide" src="images/banner2.jpg" alt="Second slide">
+                    <div class="carousel-caption ">
+                        <div>
+                            <div class="typing">
+                                <h2 class="text-uppercase">Bienvenue à notre hôtel de charme...</h2>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="carousel-item">
                     <img class="third-slide" src="images/banner3.jpg" alt="Third slide">
+                    <div class="carousel-caption">
+                        <div>
+                            <div class="typing">
+                                <h2 class="text-uppercase">Bienvenue à notre hôtel de charme...</h2>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <style>
+                .carousel-caption {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    text-align: center;
+                    padding: 10px;
+                    color: white;
+                }
+
+                /* Importing fonts from Google */
+                @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+                .typing::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 2px;
+                    height: 100%;
+                    animation: cursorBlink 0.8s steps(3) infinite;
+                }
+
+                @keyframes cursorBlink {
+
+                    0%,
+                    75% {
+                        opacity: 1;
+                    }
+
+                    76%,
+                    100% {
+                        opacity: 0;
+                    }
+                }
+
+                .typing {
+                    position: relative;
+                    -webkit-box-reflect: below 1px linear-gradient(transparent, #3333);
+                }
+
+                .typing h2 {
+                    position: relative;
+                    color: white;
+                    letter-spacing: 3px;
+                    overflow: hidden;
+                    margin-bottom: 0;
+                    animation: type 4s steps(30) infinite;
+                }
+
+                @keyframes type {
+
+                    0%,
+                    100% {
+                        width: 0px;
+                    }
+
+                    30%,
+                    60% {
+                        width: 394.09px;
+                    }
+                }
+
+                @media(max-width: 330px) {
+                    .typing h2 {
+                        font-size: 3rem;
+                        animation: type 5s steps(10) infinite;
+                    }
+
+                    @keyframes type {
+
+                        0%,
+                        100% {
+                            width: 0px;
+                        }
+
+                        30%,
+                        60% {
+                            width: 305px;
+                        }
+                    }
+                }
+            </style>
             <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
@@ -116,8 +219,8 @@
                                 @enderror
 
                                 <label for="nombre_adulte">Nombre d'Adultes</label>
-                                <input class="online_book" type="number" name="nombre_adulte" min="1" max="2"
-                                    value="{{ old('nombre_adulte', 1) }}">
+                                <input class="online_book" type="number" name="nombre_adulte" min="1"
+                                    max="2" value="{{ old('nombre_adulte', 1) }}">
                                 @error('nombre_adulte')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror

@@ -27,10 +27,9 @@
                             toast.addEventListener('mouseleave', Swal.resumeTimer)
                         }
                     })
-
                     Toast.fire({
                         icon: 'success',
-                        title: 'Ajout fait avec succès'
+                        title: 'Message envoyé avec succès'
                     })
                 </script>
             @endif

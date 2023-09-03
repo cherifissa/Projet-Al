@@ -1,4 +1,4 @@
-@extends('réservation::layouts.manager.app')
+@extends('restaurant::layouts.app')
 
 @section('title')
     Profile
@@ -53,7 +53,7 @@
                     <div class="card card-primary card-outline">
                         <div class="card-body box-profile">
                             <div class="text-center">
-                                <img class="profile-user-img img-fluid img-circle" src="{{ asset('images/profile.png') }}"
+                                <img class="profile-user-img img-fluid img-circle" src="../../dist/img/user4-128x128.jpg"
                                     alt="User profile picture">
                             </div>
 

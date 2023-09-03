@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Aut\LoginController;
 use App\Http\Controllers\ClientDashboardController;
+use App\Http\Controllers\ProfileCltController;
 use Modules\Réservation\Http\Controllers\MessageController;
 use Modules\Réservation\Http\Controllers\CommentaireController;
 use Modules\Réservation\Http\Controllers\ChambreCategorieController;
@@ -29,24 +30,26 @@ Route::prefix('/')->group(function () {
         return view('clients.accueil.index');
     })->name('accueil');
     Route::get('/reserver', [ClientReservationController::class, 'reserver'])->name('reservationclient');
-
-    Route::resource('/message', MessageController::class)->only('store');
+    Route::resource('message', MessageController::class)->only('store');
     Route::post('commentaire', [CommentaireController::class, 'store'])->name('commentairesend');
-    Route::get('/dasboard', [ClientDashboardController::class, 'index'])->name('dashboard');
-    Route::get('/contact', function () {
+    Route::get('dasboard', [ClientDashboardController::class, 'index'])->name('dashboard');
+    Route::get('contact', function () {
         return view('clients.contact.contact');
     });
-    Route::get('/about', function () {
+    Route::get('about', function () {
         return view('clients.about.about');
     });
-    Route::get('/gallery', function () {
+    Route::get('gallery', function () {
         return view('clients.gallery.gallery');
     });
-    Route::get('/chambre/{chambre}', [ChambreCategorieController::class, 'infos'])->name('chambreinfos');
+    Route::get('chambre/{chambre}', [ChambreCategorieController::class, 'infos'])->name('chambreinfos');
     Route::get('/chambre', function () {
         return view('clients.chambre.chambre');
     })->name('chambre');
     Route::get('/blog', function () {
         return view('clients.blog.blog');
     });
+    Route::post('changeasswordclt/{id}', [ProfileCltController::class, 'changePassword'])->name('changeasswordclt');
+
+    Route::resource('profileclt', ProfileCltController::class)->only('update', 'index');
 });

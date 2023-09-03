@@ -48,9 +48,8 @@
                         </div>
                     </a>
                 </div>
-
                 <div class="col-md-6 col-sm-6">
-                    <a href="chambre/Chambre Privilege">
+                    <a href="chambre/privilege">
                         <div id="serv_hover" class="room">
                             <div class="room_img">
                                 <figure><img src="images/room2.jpg" alt="#" /></figure>
@@ -62,7 +61,7 @@
                     </a>
                 </div>
                 <div class="col-md-6 col-sm-6">
-                    <a href="chambre/Suite Junior">
+                    <a href="chambre/suite junior">
                         <div id="serv_hover" class="room">
                             <div class="room_img">
                                 <figure><img src="images/room3.jpg" alt="#" /></figure>
@@ -74,7 +73,7 @@
                     </a>
                 </div>
                 <div class="col-md-6 col-sm-6">
-                    <a href="chambre/Suite Famille">
+                    <a href="chambre/suite famille">
                         <div id="serv_hover" class="room">
                             <div class="room_img">
                                 <figure><img src="images/room4.jpg" alt="#" /></figure>
@@ -86,7 +85,7 @@
                     </a>
                 </div>
                 <div class="col-md-6 col-sm-6">
-                    <a href="chambre/Suite VIP">
+                    <a href="chambre/suite VIP">
                         <div id="serv_hover" class="room">
                             <div class="room_img">
                                 <figure><img src="images/room5.jpg" alt="#" /></figure>
@@ -98,7 +97,7 @@
                     </a>
                 </div>
                 <div class="col-md-6 col-sm-6">
-                    <a href="chambre/Suite Presidentielle">
+                    <a href="chambre/suite presidentielle">
                         <div id="serv_hover" class="room">
                             <div class="room_img">
                                 <figure><img src="images/room6.jpg" alt="#" /></figure>

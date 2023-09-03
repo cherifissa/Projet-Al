@@ -45,7 +45,7 @@
                         <div class="full">
                             <div class="center-desk">
                                 <div class="logo">
-                                    <a href="/"><img src="images/logo.png" alt="#" /></a>
+                                    <a href="/"><img src="{{ asset('images/logo.png') }}" alt="#" /></a>
                                 </div>
                             </div>
                         </div>
@@ -59,11 +59,17 @@
                             </button>
                             <div class="collapse navbar-collapse" id="navbarsExample04">
                                 <ul class="navbar-nav ">
+                                    @php
+                                        $currentUrl = url()->current();
+                                        $parsedUrl = parse_url($currentUrl);
+                                        $baseUrl = $parsedUrl['scheme'] . '://' . $parsedUrl['host'] . (isset($parsedUrl['port']) ? ':' . $parsedUrl['port'] : '');
+                                        
+                                    @endphp
                                     <li class="nav-item {{ request()->is('/') ? 'active' : '' }}">
-                                        <a class="nav-link" href="/">Accueil</a>
+                                        <a class="nav-link" href="{{ $baseUrl }}">Accueil</a>
                                     </li>
                                     <li class="nav-item {{ request()->is('about*') ? 'active' : '' }}">
-                                        <a class="nav-link" href="/about">À PROPOS</a>
+                                        <a class="nav-link" href="{{ $baseUrl }}/about">À PROPOS</a>
                                     </li>
                                     <div
                                         class="nav-item dropdown {{ request()->is('blog*', 'chambre*', 'gallery*') ? 'active' : '' }}">
@@ -73,16 +79,17 @@
                                         </button>
                                         <ul class="dropdown-menu text-light ">
                                             <li>
-                                                <a class="dropdown-item" href="/chambre">Nos Chambres</a>
+                                                <a class="dropdown-item" href="{{ $baseUrl }}/chambre">Nos
+                                                    Chambres</a>
                                             </li>
-
-                                            <li><a class="dropdown-item" href="/gallery">Galerie</a></li>
-                                            <li><a class="dropdown-item" href="/blog">Blog</a></li>
+                                            <li><a class="dropdown-item" href="{{ $baseUrl }}/gallery">Galerie</a>
+                                            </li>
+                                            <li><a class="dropdown-item" href="{{ $baseUrl }}/blog">Blog</a></li>
                                         </ul>
                                     </div>
 
                                     <li class="nav-item {{ request()->is('contact*') ? 'active' : '' }}">
-                                        <a class="nav-link" href="/contact">CONTACTEZ-NOUS</a>
+                                        <a class="nav-link" href="{{ $baseUrl }}/contact">CONTACTEZ-NOUS</a>
                                     </li>
 
                                     <div class="nav-item dropdown">
@@ -94,13 +101,16 @@
 
                                             @if (session()->has('client'))
                                                 <li>
-                                                    <a class="dropdown-item" href="/profile">profile</a>
+                                                    <a class="dropdown-item"
+                                                        href="{{ $baseUrl }}/profile">profile</a>
                                                 </li>
                                                 <li>
-                                                    <a class="dropdown-item" href="/dasboard">Dashboard</a>
+                                                    <a class="dropdown-item"
+                                                        href="{{ $baseUrl }}/dasboard">Dashboard</a>
                                                 </li>
 
-                                                <li><a class="dropdown-item" href="/commentaire">Laisser un
+                                                <li><a class="dropdown-item"
+                                                        href="{{ $baseUrl }}/commentaire">Laisser un
                                                         commentaire</a>
                                                 </li>
                                                 <li>
