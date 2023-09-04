@@ -26,14 +26,15 @@ class RestaurantController extends Controller
         $product_id = $request->input('product_id');
         $product_qt = $request->input('quantite') ?? 1;
         $product_prix = $request->input('product_price');
-
-        // dd($product_id, $product_qt, $product_prix);
+        $product = Produit::find($product_id);
+        // dd($product_id, $product_qt);
         $cart = Session::get('cart', []);
 
         if (isset($cart[$product_id])) {
             $cart[$product_id]['quantity'] += $product_qt;
         } else {
             $cart[$product_id] = [
+                'name' => $product->nom,
                 'quantity' => $product_qt,
                 'price' => $product_prix,
             ];

@@ -220,6 +220,7 @@
                                         <thead>
                                             <tr>
                                                 <th>id produit</th>
+                                                <th>Nom produit</th>
                                                 <th>Quantitér</th>
                                                 <th>Prix</th>
                                                 <th>Prix total</th>
@@ -233,6 +234,7 @@
                                             @foreach ($cart as $product_id => $item)
                                                 <tr>
                                                     <td>{{ $product_id }}</td>
+                                                    <td>{{ $item['name'] }}</td>
                                                     <td>{{ $item['quantity'] }}</td>
                                                     <td>{{ $item['price'] }}</td>
                                                     <td>{{ $item['quantity'] * $item['price'] }}</td>
