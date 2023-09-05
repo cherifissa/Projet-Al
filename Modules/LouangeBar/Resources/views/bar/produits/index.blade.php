@@ -89,8 +89,9 @@
                 </thead>
                 <tbody class="table-group-divider">
                     @foreach ($produits as $produit)
-                        <tr class="table-active">
-                            <td>{{ $produit->image }}</td>
+                        <tr class="">
+                            <td><img src="{{ asset('images/' . $produit->image) }}" alt="image" width="200px"
+                                    height="120px"></td>
                             <td>{{ $produit->nom }}</td>
                             <td>{{ $produit->prix }}</td>
                             <td>{{ $produit->type }}</td>

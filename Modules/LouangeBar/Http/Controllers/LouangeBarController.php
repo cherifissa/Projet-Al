@@ -39,7 +39,6 @@ class LouangeBarController extends Controller
         }
         Session::put('cartbar', $cart);
 
-
         return redirect()->back();
     }
     public function removeFromCart(Request $request)
