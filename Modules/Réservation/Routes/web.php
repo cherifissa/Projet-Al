@@ -37,6 +37,9 @@ Route::prefix('reservation')->middleware([ReceptAccessMiddleware::class])->group
     Route::get('print_facture', [FactureController::class, 'print'])->name('factureprint');
     Route::get('chambres', [ChambreController::class, 'index'])->name('chambrerecept');
     Route::get('demandes', [DemandeReservationController::class, 'index'])->name('demandes');
+    Route::get('demandes/delete/{id}', [DemandeReservationController::class, 'destroy'])->name('demande.destroy');
+    Route::get('demande/accepte/{id}', [DemandeReservationController::class, 'accepter'])->name('mailmessage');
+    Route::get('demande/reject/{id}', [DemandeReservationController::class, 'reject'])->name('mailmessagereject');
     Route::resource('/messages', MessageController::class)->only('index', 'destroy');
     Route::resource('profile', ProfileController::class)->only('update', 'index');
     Route::post('changePassword/{id}', [ProfileController::class, 'changePassword'])->name('changePassword');

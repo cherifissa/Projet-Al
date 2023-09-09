@@ -62,7 +62,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         href="{{ '/reservation/chambre_categories' }}">
                         <div class="d-flex align-items-center">
                             <i class="nav-icon fa fa-bookmark"></i>
-                            <p class="ml-2 mt-3">Categories de Chambre</p>
+                            <p class="ml-2 mt-3">Categories</p>
                         </div>
                     </a>
                 </li>
