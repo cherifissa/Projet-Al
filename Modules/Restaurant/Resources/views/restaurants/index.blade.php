@@ -247,22 +247,24 @@
 
                                             <form action="{{ route('removeAllCart') }}" method="post">
                                                 @csrf
-                                                <button type="submit" class="btn btn-danger mb-2">
-                                                    <i class="fas fa-times-circle">Vider</i>
-                                                </button>
+                                                @if (count($cart) != 0)
+                                                    <button type="submit" class="btn btn-danger mb-2">
+                                                        <i class="fas fa-times-circle">Vider</i>
+                                                    </button>
+                                                @endif
                                             </form>
 
                                             <form action="{{ route('servicesresto.create') }}" method="post">
                                                 @csrf
                                                 @method('GET')
                                                 <input type="hidden" name="cart" value="{{ $total }}">
-                                                <button type="submit" class="btn btn-warning ml-3 mb-2">
-                                                    <i class="fas fa-times-pay">Proceder au payement</i>
-                                                </button>
+                                                @if (count($cart) != 0)
+                                                    <button type="submit" class="btn btn-warning ml-3 mb-2">
+                                                        <i class="fas fa-times-pay">Proceder au payement</i>
+                                                    </button>
+                                                @endif
                                             </form>
-
                                         </tbody>
-
                                     </table>
                                 </div>
                                 <!-- /.card-body -->

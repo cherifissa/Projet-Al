@@ -124,9 +124,11 @@
                                                 </li>
                                             @else
                                                 <li>
-                                                    <a class="dropdown-item" href="/login">Connecter</a>
+                                                    <a class="dropdown-item"
+                                                        href="{{ $baseUrl }}/login">Connecter</a>
                                                 </li>
-                                                <li><a class="dropdown-item" href="/signin">Créer un compte</a></li>
+                                                <li><a class="dropdown-item" href="{{ $baseUrl }}/login">Créer
+                                                        un compte</a></li>
                                             @endif
 
                                         </ul>

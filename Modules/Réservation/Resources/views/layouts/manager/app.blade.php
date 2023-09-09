@@ -50,7 +50,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                 <li class="nav-item">
                     <a class="nav-link {{ request()->is('reservation') ? 'active' : '' }}" aria-current="page"
-                        href="{{ '/reservation/reservation' }}">
+                        href="{{ '/reservation' }}">
                         <div class="d-flex align-items-center"> <i class="nav-icon fas fa-home"></i>
                             <p class="ml-2 mt-3">Accueil</p>
                         </div>
@@ -62,7 +62,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         href="{{ '/reservation/chambre_categories' }}">
                         <div class="d-flex align-items-center">
                             <i class="nav-icon fa fa-bookmark"></i>
-                            <p class="ml-2 mt-3">Categories</p>
+                            <p class="ml-2 mt-3">Catégories</p>
                         </div>
                     </a>
                 </li>
@@ -103,25 +103,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </li>
 
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a class="nav-link {{ request()->is('reservation/messages') ? 'active' : '' }} "
-                        href="{{ '/reservation/messages' }}">
-                        <div class="d-flex align-items-center">
-                            <i class="nav-icon fa fa-envelope"></i>
-                            <p class="ml-2 mt-3">Messages</p>
-                        </div>
-                    </a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a class="nav-link {{ request()->is('reservation/commentaires') ? 'active' : '' }} "
-                        href="{{ '/reservation/commentaires' }}">
-                        <div class="d-flex align-items-center">
-                            <i class="nav-icon fa fa-comment"></i>
-                            <p class="ml-2 mt-3">Commentaires</p>
-                        </div>
-                    </a>
-                </li>
-
-                <li class="nav-item d-none d-sm-inline-block">
                     <a class="nav-link {{ request()->is('reservation/statistiques') ? 'active' : '' }} "
                         href="/reservation/statistiques">
                         <div class="d-flex align-items-center">
@@ -145,8 +126,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <li class="nav-item ">
                     @if (session('admin') == 'admin')
                         <form action="{{ route('disconnect', session('admin')) }}" method="post">@csrf
-                            <button type="submit" class="btn btn-danger"><i
-                                    class="fas fa-sign-out-alt"></i></button>
+                            <button type="submit" class="btn btn-danger"><i class="fas fa-sign-out-alt"></i></button>
                         </form>
                     @else
                         <form action="{{ route('disconnect', session('recept')) }}" method="post">
@@ -163,7 +143,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-light-dark elevation-2">
             <!-- Brand Logo -->
-            <a href="{{ 'reservation' }}" class="brand-link">
+            <a href="{{ '/reservation' }}" class="brand-link">
                 <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Dashboard</span>
@@ -176,6 +156,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link  {{ request()->is('*/chambres*') ? 'active' : '' }} ">
+                                <i class="nav-icon fas fa-house-user"></i>
+                                <p>
+                                    Catégorie de chambre
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview" style="display: none;">
+                                <li class="nav-item">
+                                    <a href="{{ route('chambre_categories.index') }}" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Liste des Catégories</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('chambre_categories.create') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Crée une Catégorie </p>
+                                    </a>
+
+                                </li>
+                            </ul>
+                        </li>
+
                         <li class="nav-item">
                             <a href="#" class="nav-link  {{ request()->is('*/chambres*') ? 'active' : '' }} ">
                                 <i class="nav-icon fas fa-house-user"></i>
@@ -273,41 +278,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a href="#"
-                                class="nav-link  {{ request()->is('reservation/demandes') ? 'active' : '' }} ">
-                                <i class="nav-icon fa fa-bookmark"></i>
-                                <p>
-                                    Demandes de réservation
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview" style="display: none;">
-                                <li class="nav-item">
-                                    <a href="{{ 'reservation/demandes' }}" class="nav-link ">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Liste des Demandes de réservation</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#"
+
+                    </ul>
+                    <ul class="nav nav-bottom nav-sidebar flex-column" data-widget="treeview" role="menu">
+
+                        <li class="nav-item mt-auto">
+                            <a href="{{ url('reservation/messages') }}"
                                 class="nav-link  {{ request()->is('reservation/messages*') ? 'active' : '' }} ">
-                                <i class="nav-icon fa fa-envelope"></i>
-                                <p>
-                                    Messages
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
+                                <i class="nav-icon fas fa-envelope"></i>
+                                <p>Messages</p>
                             </a>
-                            <ul class="nav nav-treeview" style="display: none;">
-                                <li class="nav-item">
-                                    <a href="{{ 'reservation/messages' }}" class="nav-link ">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Liste des messages</p>
-                                    </a>
-                                </li>
-                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-bottom nav-sidebar flex-column" data-widget="treeview" role="menu">
+
+                        <li class="nav-item mt-auto">
+                            <a href="{{ url('reservation/demandes') }}"
+                                class="nav-link  {{ request()->is('reservation/demandes*') ? 'active' : '' }} ">
+                                <i class="nav-icon fas fa-bookmark"></i>
+                                <p>Demande de réservation</p>
+                            </a>
                         </li>
                     </ul>
 
@@ -325,7 +315,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <ul class="nav nav-bottom nav-sidebar flex-column" data-widget="treeview" role="menu">
 
                         <li class="nav-item mt-auto">
-                            <a href="{{ 'reservation/profile' }}"
+                            <a href="{{ '/reservation/profile' }}"
                                 class="nav-link  {{ request()->is('reservation/profile*') ? 'active' : '' }} ">
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>Profile</p>
