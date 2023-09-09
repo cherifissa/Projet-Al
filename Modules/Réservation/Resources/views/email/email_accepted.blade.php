@@ -22,7 +22,7 @@
 
     <p>Nous vous remercions d'avoir choisi notre hôtel pour votre séjour. Nous avons hâte de vous accueillir le
         {{ $date_arrive }}. Si vous avez des questions ou des demandes spéciales, n'hésitez pas à nous contacter à
-        l'adresse {{ $email_client }}.</p>
+        l'adresse contact@ketohotel.com.</p>
 
     <p>Bon voyage, et nous sommes impatients de rendre votre séjour chez nous inoubliable !</p>
 

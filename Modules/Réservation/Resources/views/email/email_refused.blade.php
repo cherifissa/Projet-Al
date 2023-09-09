@@ -19,7 +19,7 @@
         serions ravis de vous accueillir à une autre période.</p>
 
     <p>Nous sommes à votre disposition pour toute question ou assistance supplémentaire. N'hésitez pas à nous contacter
-        à l'adresse {{ $email_client }}.</p>
+        à l'adresse contact@ketohotel.com.</p>
 
     <p>Encore une fois, nous vous présentons nos excuses pour cette situation et espérons avoir l'opportunité de vous
         accueillir dans un proche avenir.</p>
