@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Redirect;
 use Modules\Réservation\Entities\Chambre;
 use Illuminate\Contracts\Support\Renderable;
 use Modules\Réservation\Entities\Reservation;
@@ -122,5 +123,14 @@ class ReservationController extends Controller
     {
         $reservation->delete();
         return redirect()->back()->with('successDelete', 'Delete');
+    }
+
+    public function pay(Reservation $reservation)
+    {
+
+        $reservation->paye = '1';
+        $reservation->save();
+        dd($reservation);
+        return Redirect::route('reservations.index')->with('successPaye', 'Paye');
     }
 }

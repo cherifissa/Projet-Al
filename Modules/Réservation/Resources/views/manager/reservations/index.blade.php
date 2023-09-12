@@ -5,6 +5,26 @@
 @endsection
 
 @section('content')
+    @if (session('successPaye'))
+        <script type="text/javascript">
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Payement fait avec succès'
+            })
+        </script>
+    @endif
     @if (session('success'))
         <script type="text/javascript">
             const Toast = Swal.mixin({

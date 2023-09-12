@@ -22,6 +22,7 @@ class Reservation extends Model
         'prix',
         'date_arrive',
         'date_depart',
+        'paye',
         'client_id',
         'chambre_id',
     ];

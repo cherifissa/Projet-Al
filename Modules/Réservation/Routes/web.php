@@ -47,6 +47,7 @@ Route::prefix('reservation')->middleware([ReceptAccessMiddleware::class])->group
     Route::resource('users', UserController::class)->except('show');
     Route::resource('commentaires', CommentaireController::class)->only('index', 'destroy');
     Route::resource('reservations', ReservationController::class)->except('show');
+    Route::post('pay/{reservation}', [ReservationController::class, 'pay'])->name('pay');
     Route::resource('admins', AdminController::class)->only('index');
     Route::get('statistiques', [StatistiqueController::class, 'index'])->name('statistiques');
     Route::resource('chambres', ChambreController::class)->except('show');

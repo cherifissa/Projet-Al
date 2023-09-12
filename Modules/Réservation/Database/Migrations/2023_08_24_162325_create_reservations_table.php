@@ -21,6 +21,7 @@ return new class extends Migration
             $table->enum('status', ['enregistre', 'attente', 'quitte', 'annule']);
             $table->date('date_arrive');
             $table->date('date_depart');
+            $table->enum('paye', [0, 1])->default(0);
             $table->bigInteger('client_id')->unsigned();
             $table->foreign('client_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('chambre_id')->unsigned();
