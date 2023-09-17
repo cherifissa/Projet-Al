@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Cache;
 
 class LoginController extends Controller
 {
@@ -15,14 +16,28 @@ class LoginController extends Controller
     }
     public function login(Request $request)
     {
-        $validatedate = $request->validate([
+        $maxAttempts = 4;
+        $sessionKey = 'login_attempts';
+        $sessionLifetime = 30;
+
+        $attempts = session($sessionKey, 0);
+
+        if ($attempts == $maxAttempts) {
+            return back()
+                ->withErrors(['erreur' => 'Trop de tentatives de connexion. Veuillez réessayer ultérieurement.'])
+                ->withInput(['email']);
+        }
+
+        $validatedData = $request->validate([
             'email' => 'required|email',
             'password' => 'required|min:8',
         ]);
 
-        $user = User::where('email', $validatedate['email'])->first();
+        $user = User::where('email', $validatedData['email'])->first();
 
-        if ($user && Hash::check($validatedate['password'], $user->password)) {
+        if ($user && Hash::check($validatedData['password'], $user->password)) {
+            session([$sessionKey => 0]);
+
             if ($user->isadmin == 'client') {
                 session(['client' => $user]);
                 return redirect()->intended('/');
@@ -36,12 +51,19 @@ class LoginController extends Controller
                 session(['server' => $user]);
                 return redirect()->intended('/restaurant');
             }
+
             return redirect()->intended();
         } else {
-            return back()->withErrors(['erreur' => 'Email ou mot de passe incorrect'])
+            $attempts++;
+            session([$sessionKey => $attempts], 30);
+
+            return back()
+                ->withErrors(['erreur' => 'Email ou mot de passe incorrect'])
                 ->withInput(['email']);
         }
     }
+
+
     public function disconnect($userid)
     {
         $user = User::find($userid);

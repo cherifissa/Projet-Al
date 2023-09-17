@@ -34,7 +34,7 @@ Route::prefix('reservation')->middleware([ReceptAccessMiddleware::class])->group
     });
     Route::get('rapport', [FactureController::class, 'rapport'])->name('rapport');
     Route::post('facture/{reservation}', [FactureController::class, 'index'])->name('facture');
-    Route::get('print_facture', [FactureController::class, 'print'])->name('factureprint');
+    Route::get('print_facture/{reservation}', [FactureController::class, 'print'])->name('factureprint');
     Route::get('chambres', [ChambreController::class, 'index'])->name('chambrerecept');
     Route::get('demandes', [DemandeReservationController::class, 'index'])->name('demandes');
     Route::get('demandes/delete/{id}', [DemandeReservationController::class, 'destroy'])->name('demande.destroy');

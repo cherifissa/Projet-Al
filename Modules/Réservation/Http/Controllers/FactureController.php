@@ -53,9 +53,36 @@ class FactureController extends Controller
 
         return $typeNames[$type] ?? $type; // Return the full name or the original type if not found
     }
-    public function print()
+    public function print(Reservation $reservation)
     {
-        return view('réservation::manager.facture.printfacture');
+        $currentDate = Carbon::now();
+        $date = "le " . $currentDate->format('d/m/Y');
+        $client = User::find($reservation->client_id);
+        $services1 = Service::where('reservation_id', $reservation->numero)
+            ->where(function ($query) {
+                $query->where('type_payement', '<>', 'reservation');
+            })->get();
+
+        $services = Service::where('reservation_id', $reservation->numero)
+            ->get()
+            ->groupBy('type_service')
+            ->map(function ($group) {
+                return [
+                    'services' => $group,
+                    'quantity' => count($group),
+                    'totalPrice' => $group->sum('prix'),
+                    'name' => $this->getServiceTypeName($group->first()->type_service)
+                ];
+            })
+            ->values()
+            ->toArray();
+
+        $totalPrixservice = $services1->sum('prix');
+        $totalPrixFromServices = collect($services)->pluck('totalPrice')->sum();
+        $totalprix = $reservation->prix + $totalPrixFromServices;
+        // dd($reservation);
+
+        return view('réservation::manager.facture.printfacture', compact('client', 'services', 'reservation', 'date', 'totalprix', 'totalPrixFromServices', 'totalPrixservice'));
     }
     public function rapport()
     {

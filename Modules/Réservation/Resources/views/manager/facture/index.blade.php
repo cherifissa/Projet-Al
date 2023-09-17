@@ -108,7 +108,7 @@
                     <div class="row">
                         <!-- accepted payments column -->
                         <div class="col-6">
-                            <p class="lead">Payment Methods:</p>
+                            <p class="lead">Méthodes de payement:</p>
                             <img src="{{ asset('dist/img/credit/visa.png') }}" alt="Visa">
                             <img src="{{ asset('dist/img/credit/mastercard.png') }}" alt="Mastercard">
                             <img src="{{ asset('dist/img/credit/american-express.png') }}" alt="American Express">
@@ -166,7 +166,7 @@
                     <!-- this row will not appear when printing -->
                     <div class="row no-print">
                         <div class="col-12">
-                            <a href="{{ route('factureprint') }}" rel="noopener" class="btn btn-default"><i
+                            <a href="{{ route('factureprint', $reservation) }}" rel="noopener" class="btn btn-default"><i
                                     class="fas fa-print"></i> Imprimer</a>
 
                             <form action="{{ route('pay', $reservation) }}" method="POST">
