@@ -93,7 +93,7 @@
                             <div class="bed_room">
                                 <h3>Suite VIP</h3>
                             </div>
-                        </div>$
+                        </div>
                     </a>
                 </div>
                 <div class="col-md-6 col-sm-6">
@@ -104,7 +104,6 @@
                             </div>
                             <div class="bed_room">
                                 <h3>Suite Presidentielle</h3>
-                                <p>Experience the pinnacle of luxury and grandeur in our presidential suite.</p>
                             </div>
                         </div>
                     </a>
@@ -115,12 +114,15 @@
                     @csrf
                     <input type="hidden" name="client_id" value="{{ session('client') }}">
                     <div class="form-group">
-                        <label for="contenu">Laisser un commentaire</label>
+                        <h3>
+                            <label for="contenu">Laisser un commentaire</label>
+                        </h3>
                         <textarea name="contenu" rows="3" class="form-control"></textarea>
                         @error('contenu')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
+                    <br>
                     <button type="submit" class="btn btn-primary">Soumettre</button>
                 </form>
             @endif

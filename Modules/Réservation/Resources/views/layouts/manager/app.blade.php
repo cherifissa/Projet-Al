@@ -157,7 +157,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <li class="nav-item">
-                            <a href="#" class="nav-link  {{ request()->is('*/chambres*') ? 'active' : '' }} ">
+                            <a href="#"
+                                class="nav-link  {{ request()->is('*/chambre_categories*') ? 'active' : '' }} ">
                                 <i class="nav-icon fas fa-house-user"></i>
                                 <p>
                                     Catégorie de chambre
@@ -207,8 +208,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </li>
 
                         <li class="nav-item">
-                            <a href="#"
-                                class="nav-link  {{ request()->is('reservation/clients*') ? 'active' : '' }} ">
+                            <a href="#" class="nav-link  {{ request()->is('*/clients*') ? 'active' : '' }} ">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     Clients
@@ -217,13 +217,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                             <ul class="nav nav-treeview" style="display: none;">
                                 <li class="nav-item">
-                                    <a href="{{ 'reservation/clients' }}" class="nav-link">
+                                    <a href="{{ route('clients.index') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Liste des clients</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ 'reservation/users/create' }}" class="nav-link">
+                                    <a href="{{ route('users.create') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Crée une client</p>
                                     </a>
@@ -265,13 +265,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                             <ul class="nav nav-treeview" style="display: none;">
                                 <li class="nav-item">
-                                    <a href="{{ 'reservation/admins' }}" class="nav-link  ">
+                                    <a href="{{ route('admins.index') }}" class="nav-link  ">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Liste des utilisateur</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ 'reservation/users/create' }}" class="nav-link">
+                                    <a href="{{ route('users.create') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Crée un utilisateur</p>
                                     </a>
@@ -287,6 +287,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 class="nav-link  {{ request()->is('reservation/messages*') ? 'active' : '' }} ">
                                 <i class="nav-icon fas fa-envelope"></i>
                                 <p>Messages</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-bottom nav-sidebar flex-column" data-widget="treeview" role="menu">
+
+                        <li class="nav-item mt-auto">
+                            <a href="{{ url('reservation/commentaires') }}"
+                                class="nav-link  {{ request()->is('reservation/commentaires*') ? 'active' : '' }} ">
+                                <i class="nav-icon fas fa-envelope"></i>
+                                <p>Commentaires</p>
                             </a>
                         </li>
                     </ul>

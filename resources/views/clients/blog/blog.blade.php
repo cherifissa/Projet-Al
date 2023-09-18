@@ -18,7 +18,7 @@
                 <div class="col-md-12">
                     <div class="titlepage">
 
-                        <p class="margin_0">Lorem Ipsum available, but the majority have suffered </p>
+                        <p class="margin_0">**************************** </p>
                     </div>
                 </div>
             </div>

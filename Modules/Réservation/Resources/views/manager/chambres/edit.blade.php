@@ -68,7 +68,7 @@
                         <!-- /.card-body -->
 
                         <div class="card-footer">
-                            <a class="btn btn-danger " href="#">Annuler</a>
+                            <a class="btn btn-danger " href="{{ route('chambres.index') }}">Annuler</a>
                             <button type="submit" class="btn btn-info float-right">Modifier</button>
                         </div>
                     </form>
