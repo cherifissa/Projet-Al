@@ -158,10 +158,10 @@
                         <ul class="conta">
                             <li><i class="fa fa-map-marker" aria-hidden="true"></i> Addresse
                             </li>
-                            <li><i class="fa fa-mobile" aria-hidden="true"></i> +228 70056985
+                            <li><i class="fa fa-mobile" aria-hidden="true"></i> +228 70058965
                             </li>
                             <li> <i class="fa fa-envelope" aria-hidden="true"></i><a href="#">
-                                    cherifissa36@gmail.com</a></li>
+                                    receptionketohotel@ketohotel.com</a></li>
                         </ul>
                     </div>
                     <div class="col-md-4">
