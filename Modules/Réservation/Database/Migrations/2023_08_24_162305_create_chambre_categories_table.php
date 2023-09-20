@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('chambre_categories', function (Blueprint $table) {
             $table->id();
-            $table->enum('nom', ['standard', 'privilege', 'suite junior', 'suite famille', 'suite VIP', 'suite presidentielle']);
+            $table->enum('nom', ['standard', 'privilege', 'suite junior', 'suite famille', 'suite VIP', 'suite presidentielle', 'salle']);
             $table->integer('prix')->unsigned();
             $table->boolean('wifi')->nullable()->default(true);
             $table->boolean('petit_dej')->nullable()->default(true);

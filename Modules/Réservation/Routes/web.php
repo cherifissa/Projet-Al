@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Modules\Réservation\Http\Controllers\UserController;
 use Modules\Réservation\Http\Controllers\AdminController;
+use Modules\Réservation\Http\Controllers\ClientController;
 use Modules\Réservation\Http\Controllers\ChambreController;
 use Modules\Réservation\Http\Controllers\FactureController;
 use Modules\Réservation\Http\Controllers\MessageController;

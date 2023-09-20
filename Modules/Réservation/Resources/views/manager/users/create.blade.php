@@ -69,6 +69,20 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
+                            <div class="form-group">
+                                <label for="sexe">Genre Utilisateur</label>
+                                <select class="form-control" name="sexe">
+                                    <option value="">Selectionner le genre </option>
+                                    <option value="M" {{ old('sexe') === 'M' ? 'selected' : '' }}>Masculin
+                                    </option>
+                                    <option value="F" {{ old('sexe') === 'F' ? 'selected' : '' }}>Feminin
+                                    </option>
+
+                                </select>
+                                @error('sexe')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
 
                             <div class="form-group">
                                 <label for="adresse">Adresse</label>

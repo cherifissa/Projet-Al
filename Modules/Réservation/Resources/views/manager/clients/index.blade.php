@@ -82,6 +82,7 @@
                 <th scope="col">Nom</th>
                 <th scope="col">Téléphone</th>
                 <th scope="col">Email</th>
+                <th scope="col">Genre</th>
                 <th scope="col">Adresse</th>
                 <th scope="col">Type</th>
                 <th scope="col">Actions</th>
@@ -95,6 +96,7 @@
                     <td>{{ $user->nom }}</td>
                     <td>{{ $user->tel }}</td>
                     <td>{{ $user->email }}</td>
+                    <td>{{ $user->sexe }}</td>
                     <td>{{ $user->adresse }}</td>
                     <td>{{ $user->isadmin }}</td>
                     <td>

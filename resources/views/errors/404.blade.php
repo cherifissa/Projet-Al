@@ -48,14 +48,19 @@
             @php
                 $url = request()->getPathInfo(); // Get the path from the request
                 $segments = explode('/', $url);
-                $firstSegment = $segments[0];
+                $prefix = '';
                 
-                if ($firstSegment == 'admin') {
-                    $prefix = 'admin';
-                } elseif ($firstSegment == 'recept') {
-                    $prefix = 'recept';
-                } else {
-                    $prefix = '';
+                foreach ($segments as $segment) {
+                    if (strpos($segment, 'restaurant') !== false) {
+                        $prefix = 'restaurant';
+                        break;
+                    } elseif (strpos($segment, 'louangebar') !== false) {
+                        $prefix = 'louangebar';
+                        break;
+                    } elseif (strpos($segment, 'reservation') !== false) {
+                        $prefix = 'reservation';
+                        break;
+                    }
                 }
                 
             @endphp

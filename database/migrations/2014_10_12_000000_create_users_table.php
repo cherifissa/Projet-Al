@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nom', 65);
             $table->string('tel', 20);
             $table->string('email', 75)->unique();
+            $table->string('sexe', 2);
             $table->enum('type_piece', ['cni', 'passeport', 'carte consulaire']);
             $table->string('numero_piece', 15);
             $table->string('adresse', 75);

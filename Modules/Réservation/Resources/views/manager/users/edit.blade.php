@@ -79,6 +79,21 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="sexe">Genre Utilisateur</label>
+                                <select class="form-control" name="sexe">
+                                    <option value="M" {{ old('sexe', $user->sexe) === 'M' ? 'selected' : '' }}>
+                                        Masculin
+                                    </option>
+                                    <option value="F" {{ old('sexe', $user->sexe) === 'F' ? 'selected' : '' }}>Feminin
+                                    </option>
+
+                                </select>
+                                @error('sexe')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
                                 <label for="adresse">Adresse</label>
                                 <input type="text" class="form-control" name="adresse"
                                     value="{{ old('numero_piece', $user->adresse) }}">
