@@ -229,7 +229,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 1,
                 'nom' => 'Stacy Flatley Sr.',
-                'tel' => '(971) 985-4622',
+                'tel' => '+22870281889',
                 'email' => 'barman@gmail.com',
                 'type_piece' => 'carte consulaire',
                 'numero_piece' => 'UA6122312',
@@ -242,8 +242,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id' => 2,
-                'nom' => 'Dr. Miles Schoen MD',
-                'tel' => '(681) 328-1489',
+                'nom' => 'Miles Schoen MD',
+                'tel' => '+22893281489',
                 'email' => 'reception@gmail.com',
                 'type_piece' => 'cni',
                 'numero_piece' => 'PO6062088',
@@ -257,7 +257,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 3,
                 'nom' => 'Jhon Schoen MD',
-                'tel' => '09 328-1489',
+                'tel' => '+22897891483',
                 'email' => 'restaurant@gmail.com',
                 'type_piece' => 'cni',
                 'numero_piece' => 'OM604088',
@@ -271,7 +271,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 4,
                 'nom' => 'Mahamat cherif',
-                'tel' => '09 328-1489',
+                'tel' => '+22870056985',
                 'email' => 'mcherif@gmail.com',
                 'type_piece' => 'passeport',
                 'numero_piece' => 'KL904488',
@@ -379,6 +379,39 @@ class DatabaseSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+        ]);
+        $reservations = Reservation::all();
+        DB::table('services')->delete();
+        DB::table('services')->insert([
+            [
+                'id' => 1,
+                'type_service' => 'ptdej',
+                'type_payement' => 'cash',
+                'prix' => '3500',
+                'reservation_id' => $reservations->random()->numero,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => 2,
+                'type_service' => 'dej',
+                'type_payement' => 'reservation',
+                'prix' => '3500',
+                'reservation_id' => $reservations->random()->numero,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => 3,
+                'type_service' => 'diner',
+                'type_payement' => 'reservation',
+                'prix' => '3500',
+                'reservation_id' => $reservations->random()->numero,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+
+
         ]);
     }
 }

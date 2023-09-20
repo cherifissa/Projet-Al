@@ -157,7 +157,7 @@
             @endif
             <div class="container mt-5">
                 <div class="book_room">
-                    <h1>Réserver une Chambre en Ligne</h1>
+                    <h1>RéserveZ une Chambre en Ligne</h1>
                     <form class="book_now" method="POST" action="{{ route('reservationclient') }}">
                         @csrf
                         @method('GET')

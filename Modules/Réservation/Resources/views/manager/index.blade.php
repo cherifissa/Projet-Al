@@ -40,7 +40,7 @@
                     <div class="small-box bg-info">
                         <div class="inner">
                             <h3>{{ $tableCounts['clients'] }}</h3>
-                            <p>Les client</p>
+                            <p>Les clients</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-bag"></i>
