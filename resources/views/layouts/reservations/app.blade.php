@@ -161,7 +161,7 @@
                             <li><i class="fa fa-mobile" aria-hidden="true"></i> +228 70058965
                             </li>
                             <li> <i class="fa fa-envelope" aria-hidden="true"></i><a href="#">
-                                    receptionketohotel@ketohotel.com</a></li>
+                                    ketohotel@ketohotel.com</a></li>
                         </ul>
                     </div>
                     <div class="col-md-4">
