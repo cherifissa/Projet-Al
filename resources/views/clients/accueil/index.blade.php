@@ -1,6 +1,40 @@
 @extends('layouts.reservations.app')
 @section('contente')
     <section class="">
+        <style>
+            .txt-typing {
+                white-space: nowrap;
+                overflow: hidden;
+                color: white;
+                /* Set the text color to white */
+                text-decoration-color: #5c21aA;
+                border-right: 5px solid transparent;
+                animation: typing 3s steps(17) infinite, blink-caret .5s step-end infinite;
+            }
+
+            @keyframes typing {
+                from {
+                    width: 0;
+                }
+
+                to {
+                    width: 100%;
+                }
+            }
+
+            @keyframes blink-caret {
+
+                from,
+                to {
+                    border-color: transparent;
+                }
+
+                50% {
+                    border-color: #5c21aA;
+                }
+            }
+        </style>
+
         <div id="myCarousel" class="carousel slide banner" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -12,8 +46,8 @@
                     <img class="first-slide" src="images/banner1.jpg" alt="First slide">
                     <div class="carousel-caption ">
                         <div>
-                            <div class="typing">
-                                <h2 class="text-uppercase">Bienvenue à notre hôtel de charme...</h2>
+                            <div class="txt-typing">
+                                <h2 class="text-uppercase text-white">Bienvenue à notre hôtel de charme...</h2>
                             </div>
                         </div>
                     </div>
@@ -22,8 +56,8 @@
                     <img class="second-slide" src="images/banner2.jpg" alt="Second slide">
                     <div class="carousel-caption ">
                         <div>
-                            <div class="typing">
-                                <h2 class="text-uppercase">Bienvenue à notre hôtel de charme...</h2>
+                            <div class="txt-typing">
+                                <h2 class="text-uppercase text-white">Bienvenue à notre hôtel de charme...</h2>
                             </div>
                         </div>
                     </div>
@@ -32,8 +66,8 @@
                     <img class="third-slide" src="images/banner3.jpg" alt="Third slide">
                     <div class="carousel-caption">
                         <div>
-                            <div class="typing">
-                                <h2 class="text-uppercase">Bienvenue à notre hôtel de charme...</h2>
+                            <div class="txt-typing">
+                                <h2 class="text-uppercase text-white">Bienvenue à notre hôtel de charme...</h2>
                             </div>
                         </div>
                     </div>
