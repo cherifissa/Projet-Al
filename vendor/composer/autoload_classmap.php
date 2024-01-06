@@ -6,6 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Console\\Commands\\ClearLoginAttempts' => $baseDir . '/app/Console/Commands/ClearLoginAttempts.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Aut\\LoginController' => $baseDir . '/app/Http/Controllers/Aut/LoginController.php',
@@ -200,11 +201,7 @@ return array(
     'Darryldecode\\Cart\\Validators\\CartItemValidator' => $vendorDir . '/darryldecode/cart/src/Darryldecode/Cart/Validators/CartItemValidator.php',
     'Darryldecode\\Cart\\Validators\\Validator' => $vendorDir . '/darryldecode/cart/src/Darryldecode/Cart/Validators/Validator.php',
     'Database\\Factories\\UserFactory' => $baseDir . '/database/factories/UserFactory.php',
-    'Database\\Seeders\\ChambreCategorieTableSeeder' => $baseDir . '/database/seeders/ChambreCategorieTableSeeder.php',
-    'Database\\Seeders\\ChambreTableSeeder' => $baseDir . '/database/seeders/ChambreTableSeeder.php',
     'Database\\Seeders\\DatabaseSeeder' => $baseDir . '/database/seeders/DatabaseSeeder.php',
-    'Database\\Seeders\\RéservationTableSeeder' => $baseDir . '/database/seeders/RéservationTableSeeder.php',
-    'Database\\Seeders\\UsersTableSeeder' => $baseDir . '/database/seeders/UsersTableSeeder.php',
     'DateError' => $vendorDir . '/symfony/polyfill-php83/Resources/stubs/DateError.php',
     'DateException' => $vendorDir . '/symfony/polyfill-php83/Resources/stubs/DateException.php',
     'DateInvalidOperationException' => $vendorDir . '/symfony/polyfill-php83/Resources/stubs/DateInvalidOperationException.php',

@@ -555,6 +555,7 @@ class ComposerStaticInitbefbccefa307a7c9e8438efb6df6d999
     );
 
     public static $classMap = array (
+        'App\\Console\\Commands\\ClearLoginAttempts' => __DIR__ . '/../..' . '/app/Console/Commands/ClearLoginAttempts.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Aut\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Aut/LoginController.php',
@@ -749,11 +750,7 @@ class ComposerStaticInitbefbccefa307a7c9e8438efb6df6d999
         'Darryldecode\\Cart\\Validators\\CartItemValidator' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Validators/CartItemValidator.php',
         'Darryldecode\\Cart\\Validators\\Validator' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Validators/Validator.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
-        'Database\\Seeders\\ChambreCategorieTableSeeder' => __DIR__ . '/../..' . '/database/seeders/ChambreCategorieTableSeeder.php',
-        'Database\\Seeders\\ChambreTableSeeder' => __DIR__ . '/../..' . '/database/seeders/ChambreTableSeeder.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
-        'Database\\Seeders\\RéservationTableSeeder' => __DIR__ . '/../..' . '/database/seeders/RéservationTableSeeder.php',
-        'Database\\Seeders\\UsersTableSeeder' => __DIR__ . '/../..' . '/database/seeders/UsersTableSeeder.php',
         'DateError' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateError.php',
         'DateException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateException.php',
         'DateInvalidOperationException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateInvalidOperationException.php',
